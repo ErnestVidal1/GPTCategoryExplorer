@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPTCategoryExplorer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Welcome to GPTCategoryExplorer</h1>
+        <p>Facilitate the integration of new items into your classification structure with the help of ChatGPT.</p>
+    </header>
+
+    <main class="main-container">
+        <section class="input-section">
+            <h2>Upload Your Categories</h2>
+            <div class="box">
+                <ol>
+                    <li>
+                        <a href="data/template.json" download="Template.json">Download our standard categorization template</a>
+                    </li>
+                    <li>
+                        Customize the template with your categories and metadescriptive components.
+                    </li>
+                    <li>
+                        <a href="#" onclick="uploadTemplateCategories(event)">Upload the modified categorization template</a>
+                    </li>
+                </ol>
+            </div>
+        </section>
+        
+        <section class="description-section">
+            <h2>Describe Your Item</h2>
+            <div class="box">
+                <textarea id="userNeeds" placeholder="Describe your item..." rows="4" style="width:100%;"></textarea>
+            </div>
+        </section>
+        
+        <div class="button-container">
+            <button id="startExploration">Start Exploration with ChatGPT</button>
+            <button id="clearCategories">Clear ChatGPT Navigation Path</button>
+        </div>
+        
+        <section class="navigation-section">
+            <h2>ChatGPT Navigation Path</h2>
+            <div class="box code-output">
+                <ul id="categoryList"></ul>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2>Classification Results</h2>
+            <div class="box">
+                <p id="resultText"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        GPTCategoryExplorer © 2024
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

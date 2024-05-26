@@ -1,0 +1,48 @@
+{
+  "Categories": {
+    "Category 1": {
+      "Subcategory 1": {
+        "Items": [
+          {
+            "id": "0001",
+            "name": "Item Name",
+            "description": "Detailed description of the item here.",
+            "additional_info": "Additional information about the item.",
+            "tags": ["Tag 1", "Tag 2"]
+          },
+          {
+            "id": "0002",
+            "name": "Second Item Name",
+            "description": "Detailed description of the second item here.",
+            "additional_info": "Additional information about the second item.",
+            "tags": ["Tag 1", "Tag 3"]
+          }
+        ]
+      }
+    },
+    "Category 2": {
+      "Subcategory 1": {
+        "Items": [
+          {
+            "id": "0003",
+            "name": "Third Item Name",
+            "description": "Detailed description of the third item here.",
+            "additional_info": "Additional information about the third item.",
+            "tags": ["Tag 4", "Tag 5"]
+          }
+        ]
+      },
+      "Subcategory 2": {
+        "Items": [
+          {
+            "id": "0004",
+            "name": "Fourth Item Name",
+            "description": "Detailed description of the fourth item here.",
+            "additional_info": "Additional information about the fourth item.",
+            "tags": ["Tag 6", "Tag 7"]
+          }
+        ]
+      }
+    }
+  }
+}

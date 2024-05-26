@@ -1,0 +1,18 @@
+{
+  "name": "gpt-category-explorer",
+  "version": "1.0.0",
+  "description": "A web application to assist in exploring categories using ChatGPT based on user inputs.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.5.0",
+    "express-session": "^1.18.0"
+  },
+  "author": "Ernest Vidal",
+  "license": "ISC"
+}
