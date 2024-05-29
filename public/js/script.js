@@ -124,6 +124,8 @@ function clearCategories() {
 
 // Inicia el proceso de categorías
 function initiateCategoryProcess() {
+	        console.log("En initiateCategoryProcess.");
+
     const description = document.getElementById('userNeeds').value.trim();
     sessionStorage.setItem('currentDescription', description); // Guardar en sessionStorage
     if (!description) {
