@@ -161,10 +161,18 @@ function createCategoryPrompt(description, categories) {
 function sendCategoryMessageToServer(message) {
     fetch('/api/chat', {
         method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: message
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })  // Enviar el mensaje como un objeto JSON
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            // Intentar obtener el cuerpo del error como texto
+            return response.text().then(text => {
+                throw new Error(`HTTP error! Status: ${response.status}, Body: ${text}`);
+            });
+        }
+        return response.json();  // Parsea la respuesta como JSON solo si la respuesta fue exitosa
+    })
     .then(data => {
         const category = getSelectedCategory(data);
         if (category) {
@@ -174,9 +182,12 @@ function sendCategoryMessageToServer(message) {
         }
     })
     .catch(error => {
-        console.error('Error al procesar tu solicitud: ' + error);
+        console.error('Error al procesar tu solicitud:', error);
+        displayError('Failed to process your request.');
     });
 }
+
+
 
 // Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {

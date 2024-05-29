@@ -32,7 +32,7 @@ app.use(express.text());
 
 app.post('/upload-json', (req, res) => {
     if (!req.files || !req.files.file) {
-        return res.status(400).send('No file was uploaded.');
+        return res.status(400).json({ error: 'No file was uploaded.' });  // Devolver JSON en caso de error
     }
 
     const jsonFile = req.files.file;
@@ -41,17 +41,17 @@ app.post('/upload-json', (req, res) => {
     jsonFile.mv(tempPath, async (err) => {
         if (err) {
             console.error('Error moving the file:', err);
-            return res.status(500).send('Error processing file.');
+            return res.status(500).json({ error: 'Error processing file.' });  // Devolver JSON en caso de error
         }
 
         try {
             const data = fs.readFileSync(tempPath, 'utf8');
             req.session.categoryData = JSON.parse(data);
             console.log('Category data stored in session:', req.session.categoryData);
-            res.send({ message: 'File uploaded and processed successfully.' });
+            res.json({ message: 'File uploaded and processed successfully.' });
         } catch (error) {
             console.error('Error reading or parsing the file:', error);
-            res.status(500).send('Error parsing the JSON file.');
+            res.status(500).json({ error: 'Error parsing the JSON file.' });  // Devolver JSON en caso de error
         }
     });
 });
@@ -80,7 +80,7 @@ app.post('/api/chat', async (req, res) => {
         } else {
             console.error("Error setting up the request:", error.message);
         }
-        res.status(500).send('Error processing the ChatGPT request.');
+        res.status(500).json({ error: 'Error processing the ChatGPT request.' });  // Devolver JSON en caso de error
     }
 });
 
