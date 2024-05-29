@@ -161,29 +161,35 @@ function createCategoryPrompt(description, categories) {
 
 // Envía el mensaje de categoría al servidor y maneja la respuesta
 function sendCategoryMessageToServer(message) {
-	fetch('/api/chat', {
-		method: 'POST',
-		headers: {'Content-Type': 'text/plain'},
-		body: message
-	})
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		return response.json();
-	})
-	.then(data => {
-		const category = getSelectedCategory(data);
-		if (category) {
-			processCategory(category, message);
-		} else {
-			displayError('No valid category found.');
-		}
-	})
-	.catch(error => {
-		console.error('Error al procesar tu solicitud: ' + error);
-	});
-
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Si la respuesta del servidor no es exitosa, lanza un error con el estado
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();  // Parsea la respuesta como JSON solo si la respuesta fue exitosa
+    })
+    .then(data => {
+        // Procesa los datos recibidos del servidor
+        const category = getSelectedCategory(data);  // Suponiendo que esta función analiza la respuesta para extraer la categoría
+        if (category) {
+            // Si se encontró una categoría válida, procesa la categoría
+            processCategory(category, message);  // Suponiendo que esta función hace algo útil con la categoría y el mensaje
+        } else {
+            // Si no se encontró una categoría válida, muestra un error en la interfaz de usuario
+            displayError('No valid category found.');  // Suponiendo que esta función muestra el error en la interfaz de usuario
+        }
+    })
+    .catch(error => {
+        // Captura cualquier error en la cadena de promesas y lo loguea
+        console.error('Error al procesar tu solicitud:', error);
+        displayError('Failed to process your request.');  // Informa al usuario que la solicitud falló
+    });
+}
 
 // Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {
