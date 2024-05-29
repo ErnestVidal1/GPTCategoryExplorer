@@ -1,1 +1,472 @@
-const _0xa51c12=_0x2b32;(function(_0x4b96d8,_0x195fce){const _0x3cabce=_0x2b32,_0x22738a=_0x4b96d8();while(!![]){try{const _0x50c334=parseInt(_0x3cabce(0x165))/0x1*(-parseInt(_0x3cabce(0x12a))/0x2)+parseInt(_0x3cabce(0x144))/0x3*(-parseInt(_0x3cabce(0x15c))/0x4)+parseInt(_0x3cabce(0x124))/0x5+parseInt(_0x3cabce(0x139))/0x6*(parseInt(_0x3cabce(0x13c))/0x7)+-parseInt(_0x3cabce(0x15d))/0x8*(parseInt(_0x3cabce(0x14f))/0x9)+parseInt(_0x3cabce(0x149))/0xa+parseInt(_0x3cabce(0x125))/0xb;if(_0x50c334===_0x195fce)break;else _0x22738a['push'](_0x22738a['shift']());}catch(_0xa37529){_0x22738a['push'](_0x22738a['shift']());}}}(_0x5d52,0xea2c4),document[_0xa51c12(0x135)](_0xa51c12(0x163),function(){initialize(),setupButtonListeners();}));function _0x2b32(_0x17b41f,_0x337a18){const _0x5d52d9=_0x5d52();return _0x2b32=function(_0x2b3223,_0x2dcdad){_0x2b3223=_0x2b3223-0x124;let _0x538396=_0x5d52d9[_0x2b3223];return _0x538396;},_0x2b32(_0x17b41f,_0x337a18);}function initialize(){const _0x1e6212=_0xa51c12;console[_0x1e6212(0x157)]('Initialization\x20complete.');}function setupButtonListeners(){const _0x5ed4a1=_0xa51c12,_0x38737b=document['getElementById']('startExploration');_0x38737b&&_0x38737b[_0x5ed4a1(0x135)](_0x5ed4a1(0x170),function(){const _0x10758e=_0x5ed4a1;console['log'](_0x10758e(0x12e));const _0x27249c=document['getElementById'](_0x10758e(0x12c))[_0x10758e(0x14e)][_0x10758e(0x16b)]();sessionStorage[_0x10758e(0x167)](_0x10758e(0x142),_0x27249c);if(!_0x27249c){console[_0x10758e(0x157)]('Por\x20favor,\x20describe\x20tu\x20artículo.');return;}const _0x1d4a99=sessionStorage[_0x10758e(0x13a)](_0x10758e(0x16f));if(!_0x1d4a99){console[_0x10758e(0x157)](_0x10758e(0x127));return;}const _0x264eff=JSON[_0x10758e(0x12b)](_0x1d4a99);if(_0x264eff&&_0x264eff[_0x10758e(0x147)]){const _0x583d9a=Object['keys'](_0x264eff[_0x10758e(0x147)]),_0x22aee4=createCategoryPrompt(_0x27249c,_0x583d9a);sendCategoryMessageToServer(_0x22aee4);}else console[_0x10758e(0x157)](_0x10758e(0x164));});const _0x322254=document[_0x5ed4a1(0x154)](_0x5ed4a1(0x145));_0x322254&&_0x322254['addEventListener'](_0x5ed4a1(0x170),function(){clearCategories();});}function uploadTemplateCategories(_0x2033de){const _0x1dbd91=_0xa51c12;_0x2033de[_0x1dbd91(0x14b)]();const _0x3a250b=document[_0x1dbd91(0x152)](_0x1dbd91(0x16a));_0x3a250b[_0x1dbd91(0x168)]='file',_0x3a250b[_0x1dbd91(0x141)]=_0x1dbd91(0x158),_0x3a250b[_0x1dbd91(0x171)]=_0x6f4c7d=>{const _0xfa5f5a=_0x1dbd91,_0x2a6647=_0x6f4c7d['target']['files'][0x0];if(_0x2a6647){const _0x3c9fbe=new FileReader();_0x3c9fbe[_0xfa5f5a(0x133)]=function(_0x3f328a){const _0x279336=_0xfa5f5a,_0x846f99=_0x3f328a[_0x279336(0x150)][_0x279336(0x137)];sessionStorage[_0x279336(0x167)]('categoryData',_0x846f99),console[_0x279336(0x157)](_0x279336(0x153));},_0x3c9fbe[_0xfa5f5a(0x12d)](_0x2a6647);}},_0x3a250b[_0x1dbd91(0x170)]();}function getSelectedCategory(_0x11d18b){const _0x5d75fa=_0xa51c12;if(_0x11d18b['choices']&&_0x11d18b['choices'][0x0]&&_0x11d18b[_0x5d75fa(0x15e)][0x0]['message']&&_0x11d18b[_0x5d75fa(0x15e)][0x0]['message'][_0x5d75fa(0x15b)]){const _0x3c99b4=_0x11d18b[_0x5d75fa(0x15e)][0x0][_0x5d75fa(0x166)]['content'];return _0x3c99b4[_0x5d75fa(0x14d)](_0x5d75fa(0x160))?(displayError(_0x3c99b4),null):_0x3c99b4;}return null;}function sendCategoryMessageToServer(_0xa56919){const _0x571f5f=_0xa51c12;fetch(_0x571f5f(0x140),{'method':_0x571f5f(0x13d),'headers':{'Content-Type':_0x571f5f(0x14c)},'body':_0xa56919})[_0x571f5f(0x16c)](_0x3c9770=>_0x3c9770[_0x571f5f(0x159)]())[_0x571f5f(0x16c)](_0x1665fd=>{const _0x1dbba0=_0x571f5f,_0x5c44be=getSelectedCategory(_0x1665fd);_0x5c44be?processCategory(_0x5c44be,_0xa56919):displayError(_0x1dbba0(0x138));})[_0x571f5f(0x131)](_0x4818f6=>{const _0x73c5=_0x571f5f;alert(_0x73c5(0x15f)+_0x4818f6);});}function sendSubcategoryMessageToServer(_0x361598,_0x146923){const _0x190ba8=_0xa51c12;fetch('/api/chat',{'method':_0x190ba8(0x13d),'headers':{'Content-Type':'text/plain'},'body':_0x361598})[_0x190ba8(0x16c)](_0x3c9e89=>_0x3c9e89[_0x190ba8(0x159)]())[_0x190ba8(0x16c)](_0x5cf6ca=>{const _0x537ead=_0x190ba8,_0x22afdb=getSelectedCategory(_0x5cf6ca);_0x22afdb?displayChatGPTResponse(_0x146923,_0x22afdb,_0x361598):displayError(_0x537ead(0x136));})['catch'](_0x425400=>{const _0x276f56=_0x190ba8;alert(_0x276f56(0x15f)+_0x425400);});}function processCategory(_0x3e7240,_0x3e72b1){const _0x3b8a9c=_0xa51c12,_0x15b3f5=sessionStorage[_0x3b8a9c(0x13a)](_0x3b8a9c(0x16f));if(!_0x15b3f5){console['error']('No\x20category\x20data\x20found\x20in\x20sessionStorage.');return;}const _0x4dbbf1=JSON[_0x3b8a9c(0x12b)](_0x15b3f5),_0x108de8=_0x4dbbf1[_0x3b8a9c(0x147)][_0x3e7240];if(_0x108de8){displayChatGPTResponse(_0x3e7240,_0x108de8,_0x3e72b1);const _0x1d9d08=Object[_0x3b8a9c(0x13e)](_0x108de8),_0x3e284e=sessionStorage[_0x3b8a9c(0x13a)](_0x3b8a9c(0x142)),_0x3981b2=createSubcategoryPrompt(_0x3e7240,_0x1d9d08,_0x3e284e);sendSubcategoryMessageToServer(_0x3981b2,_0x3e7240);}else displayError('No\x20subcategories\x20found\x20for\x20the\x20category:\x20'+_0x3e7240);}function displayChatGPTResponse(_0xb44362,_0x4ab712,_0x4e529e){const _0x2c0362=_0xa51c12,_0x1dfe79=document[_0x2c0362(0x154)](_0x2c0362(0x15a));if(!_0x1dfe79){console[_0x2c0362(0x12f)](_0x2c0362(0x155));return;}if(_0x4ab712==_0x2c0362(0x16e)){const _0xb5c0d2=_0x4e529e[_0x2c0362(0x143)]('\x0a')[0x2][_0x2c0362(0x151)](_0x2c0362(0x146),''),_0x22a03b=document[_0x2c0362(0x152)]('p');_0x22a03b[_0x2c0362(0x156)]='category-title',_0x22a03b['textContent']='Categories\x20sent\x20to\x20ChatGPT:',_0x1dfe79[_0x2c0362(0x161)](_0x22a03b);const _0x2c4545=document[_0x2c0362(0x152)]('p');_0x2c4545[_0x2c0362(0x126)]=_0xb5c0d2,_0x1dfe79[_0x2c0362(0x161)](_0x2c4545);const _0x18426c=document[_0x2c0362(0x152)]('p');_0x18426c[_0x2c0362(0x156)]='category-title',_0x18426c[_0x2c0362(0x126)]=_0x2c0362(0x130),_0x1dfe79[_0x2c0362(0x161)](_0x18426c);const _0x344cbb=document['createElement']('p');_0x344cbb[_0x2c0362(0x126)]=_0xb44362,_0x1dfe79[_0x2c0362(0x161)](_0x344cbb);}else{const _0x325d6d=_0x4e529e[_0x2c0362(0x143)]('\x0a')[0x1][_0x2c0362(0x151)](_0x2c0362(0x129),''),_0x5145fb=document[_0x2c0362(0x152)]('p');_0x5145fb[_0x2c0362(0x156)]='category-title',_0x5145fb[_0x2c0362(0x126)]=_0x2c0362(0x13f),_0x1dfe79[_0x2c0362(0x161)](_0x5145fb);const _0x17567d=document['createElement']('p');_0x17567d['textContent']=_0x325d6d,_0x1dfe79[_0x2c0362(0x161)](_0x17567d);const _0x333d46=document[_0x2c0362(0x152)]('p');_0x333d46['className']=_0x2c0362(0x148),_0x333d46[_0x2c0362(0x126)]=_0x2c0362(0x13b),_0x1dfe79[_0x2c0362(0x161)](_0x333d46);const _0x4a245c=document['createElement']('p');_0x4a245c[_0x2c0362(0x126)]=_0x4ab712,_0x1dfe79[_0x2c0362(0x161)](_0x4a245c);}}function displayError(_0x379a3e){const _0x370c6a=_0xa51c12,_0x1d0a9f=document[_0x370c6a(0x154)](_0x370c6a(0x15a)),_0x204927=document[_0x370c6a(0x152)]('li');_0x204927[_0x370c6a(0x156)]='error-message',_0x204927[_0x370c6a(0x126)]=_0x370c6a(0x162)+_0x379a3e,_0x1d0a9f['appendChild'](_0x204927);}function createCategoryPrompt(_0x16cd8f,_0x3d7575){const _0x22c7b2=_0xa51c12;let _0x48fd9b='Based\x20on\x20the\x20description\x20provided,\x20please\x20choose\x20the\x20most\x20appropriate\x20category\x20from\x20the\x20list\x20below.\x20Respond\x20with\x20only\x20the\x20name\x20of\x20the\x20selected\x20category\x20exactly\x20as\x20it\x20appears,\x20even\x20if\x20it\x20contains\x20typos\x20or\x20errors.\x20If\x20the\x20description\x20matches\x20multiple\x20categories\x20equally,\x20choose\x20the\x20one\x20that\x20best\x20represents\x20the\x20primary\x20context\x20of\x20the\x20description.\x20If\x20no\x20category\x20is\x20appropriate,\x20begin\x20your\x20response\x20with\x20\x22ERROR:\x22\x20followed\x20by\x20your\x20reason.\x0a';return _0x48fd9b+='Description:\x20\x22'+_0x16cd8f+'\x22.\x0a',_0x48fd9b+=_0x22c7b2(0x146)+_0x3d7575[_0x22c7b2(0x169)](',\x20')+'.\x0a',_0x48fd9b+=_0x22c7b2(0x132),_0x48fd9b;}function createSubcategoryPrompt(_0x31fa8f,_0xdfe508,_0x4e51d8){const _0x27e8d5=_0xa51c12;let _0x5471d2=_0xdfe508[0x0],_0x1580e1=_0x27e8d5(0x14a)+_0x31fa8f+_0x27e8d5(0x128)+_0x4e51d8+_0x27e8d5(0x134)+_0x5471d2+'\x27.\x0a';return _0x1580e1+=_0x27e8d5(0x129)+_0xdfe508[_0x27e8d5(0x169)](',\x20')+'.\x0a',_0x1580e1+=_0x27e8d5(0x16d),_0x1580e1;}function clearCategories(){const _0x1741a0=_0xa51c12,_0xc3ffb5=document['getElementById'](_0x1741a0(0x15a));_0xc3ffb5&&(_0xc3ffb5['innerHTML']='');}function _0x5d52(){const _0xde6521=['Respond\x20only\x20with\x20the\x20subcategory\x20name.\x0a','[object\x20Object]','categoryData','click','onchange','9080975xpzhBk','3710421cjDkiw','textContent','No\x20se\x20encontraron\x20datos\x20de\x20categorías.\x20Por\x20favor,\x20sube\x20un\x20archivo\x20JSON\x20primero.','\x22\x20and\x20the\x20initial\x20description\x20provided\x20(\x22','Subcategories:\x20','238rYNvDh','parse','userNeeds','readAsText','Click\x20registered','error','Selected\x20category\x20by\x20ChatGPT:','catch','Please\x20ensure\x20your\x20response\x20contains\x20only\x20the\x20category\x20name\x20or\x20an\x20error\x20message\x20as\x20specified.\x0a','onload','\x22),\x20please\x20choose\x20the\x20most\x20appropriate\x20subcategory\x20from\x20the\x20list\x20below.\x20If\x20the\x20description\x20applies\x20equally\x20across\x20multiple\x20subcategories\x20or\x20if\x20there\x20is\x20insufficient\x20context\x20to\x20distinguish\x20them,\x20default\x20to\x20selecting\x20\x27','addEventListener','No\x20valid\x20subcategory\x20found.','result','No\x20valid\x20category\x20found.','29010ORbbSr','getItem','Selected\x20subcategory\x20by\x20ChatGPT:','2065ysecGp','POST','keys','Subcategories\x20sent\x20to\x20ChatGPT:','/api/chat','accept','currentDescription','split','3WtTaVz','clearCategories','Categories:\x20','Categories','category-title','1134510ZPyyMq','You\x20are\x20assisting\x20in\x20navigating\x20a\x20web\x20application\x20that\x20categorizes\x20items.\x20Based\x20on\x20the\x20selected\x20category\x20\x22','preventDefault','text/plain','startsWith','value','36SFiwoj','target','replace','createElement','Archivo\x20JSON\x20subido\x20y\x20almacenado\x20correctamente.','getElementById','Element\x20with\x20ID\x20\x22categoryList\x22\x20not\x20found.','className','log','.json','json','categoryList','content','5073884gZoeTQ','905184RWbYOt','choices','Ocurrió\x20un\x20error\x20al\x20procesar\x20tu\x20solicitud:\x20','ERROR:','appendChild','Error:\x20','DOMContentLoaded','No\x20se\x20encontraron\x20categorías\x20en\x20el\x20JSON\x20subido.','8513dCoREG','message','setItem','type','join','input','trim','then'];_0x5d52=function(){return _0xde6521;};return _0x5d52();}
+document.addEventListener('DOMContentLoaded', function() {
+    setupButtonListeners();
+	initialize();
+});
+function initialize() {
+    console.log("Initialization complete.");
+}
+
+
+function uploadTemplateCategories(event) {
+    event.preventDefault();
+    const uploadInput = document.createElement("input");
+    uploadInput.type = "file";
+    uploadInput.accept = ".json";
+    uploadInput.onchange = event => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileContent = e.target.result;
+                sessionStorage.setItem('categoryData', fileContent);
+                console.log('Archivo JSON subido y almacenado correctamente.');
+                
+                // Parsear el contenido del archivo JSON
+                const jsonContent = JSON.parse(fileContent);
+                
+                // Imprimir categorías y subcategorías por si se desea consultar
+                const categories = jsonContent.Categories;
+                console.log('Categorías y Subcategorías:');
+                for (const categoryName in categories) {
+                    console.log(categoryName);  // Imprime el nombre de la categoría
+                    const subcategories = categories[categoryName];
+                    for (const subcategoryName in subcategories) {
+                        console.log(`  - ${subcategoryName}`);  // Imprime el nombre de la subcategoría con indentación
+                    }
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+    uploadInput.click();
+}
+
+
+
+
+function displayError(errorMessage) {
+    const responseElement = document.getElementById('categoryList');
+
+    const li = document.createElement('li');
+    li.className = 'error-message';
+    li.textContent = `Error: ${errorMessage}`;
+    responseElement.appendChild(li);
+}
+
+
+// Configura los oyentes de eventos para los botones
+function setupButtonListeners() {
+    const startButton = document.getElementById('startExploration');
+    if (startButton) {
+        startButton.addEventListener('click', function() {
+            console.log("Click registrado");
+            initiateCategoryProcess();
+        });
+    }
+
+    const clearButton = document.getElementById('clearCategories');
+    if (clearButton) {
+        clearButton.addEventListener('click', function() {
+            clearCategories();
+        });
+    }
+}
+
+function clearCategories() {
+    const categoryListElement = document.getElementById('categoryList');
+    if (categoryListElement) {
+        categoryListElement.innerHTML = ''; // Clear the displayed list
+    }
+}
+
+
+
+// ==============================================================================
+// CATEGORÍAS
+// ==============================================================================
+
+
+// Inicia el proceso de categorías
+function initiateCategoryProcess() {
+    const description = document.getElementById('userNeeds').value.trim();
+    sessionStorage.setItem('currentDescription', description); // Guardar en sessionStorage
+    if (!description) {
+        console.log("Por favor, describe tu artículo.");
+        return;
+    }
+	
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.log('No se encontraron datos de categorías. Por favor, sube un archivo JSON primero.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    if (data && data.Categories) {
+        const categories = Object.keys(data.Categories);
+        const promptMessage = createCategoryPrompt(description, categories);
+        sendCategoryMessageToServer(promptMessage);
+    } else {
+        console.log('No se encontraron categorías en el JSON subido.');
+    }
+}
+
+// Función para crear el mensaje del primer prompt para categorías
+function createCategoryPrompt(description, categories) {
+    let promptMessage = `Based on the description provided, please choose the most appropriate category from the list below. Respond with only the name of the selected category exactly as it appears, even if it contains typos or errors. If the description matches multiple categories equally, choose the one that best represents the primary context of the description. If no category is appropriate, begin your response with "ERROR:" followed by your reason.\n`;
+    promptMessage += `Description: "${description}".\n`;
+    promptMessage += `Categories: ${categories.join(', ')}.\n`;
+    promptMessage += `Please ensure your response contains only the category name or an error message as specified.\n`;
+
+    return promptMessage;
+}
+
+// Envía el mensaje de categoría al servidor y maneja la respuesta
+function sendCategoryMessageToServer(message) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const category = getSelectedCategory(data);
+        if (category) {
+            processCategory(category, message);
+        } else {
+            displayError('No valid category found.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+// Extrae la categoría seleccionada de la respuesta del servidor
+function getSelectedCategory(data) {
+    if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+        const responseContent = data.choices[0].message.content;
+        if (responseContent.startsWith("ERROR:")) {
+            displayError(responseContent);
+            return null;
+        } else {
+            return responseContent;
+        }
+    }
+    return null;
+}
+
+// Procesa la categoría seleccionada, obteniendo subcategorías si están disponibles
+function processCategory(category, originalMessage) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const subcategories = data.Categories[category];
+    if (subcategories) {
+        displayChatGPTResponseCategory(category, originalMessage);
+		initiateSubcategoryProcess(category);
+    } else {
+        displayError('No se encontraron subcategorías para la categoría seleccionada.');
+    }
+}
+
+// Visualiza la respuesta de ChatGPT para categorías
+function displayChatGPTResponseCategory(category, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las categorías enviadas y la categoría seleccionada
+    const originalCategories = originalMessage.split('\n')[2].replace('Categories: ', '');
+
+    const categoriesSent = document.createElement('p');
+    categoriesSent.className = 'category-title';
+    categoriesSent.textContent = 'Categories sent to ChatGPT:';
+    responseElement.appendChild(categoriesSent);
+
+    const categoriesList = document.createElement('p');
+    categoriesList.textContent = originalCategories;
+    responseElement.appendChild(categoriesList);
+
+    const selectedCategoryTitle = document.createElement('p');
+    selectedCategoryTitle.className = 'category-title chatgpt-response';
+    selectedCategoryTitle.textContent = 'Selected category by ChatGPT:';
+    responseElement.appendChild(selectedCategoryTitle);
+
+    const selectedCategoryName = document.createElement('p');
+	selectedCategoryName.className = 'category-content chatgpt-response';
+    selectedCategoryName.textContent = category;
+    responseElement.appendChild(selectedCategoryName);
+}
+
+
+
+// ==============================================================================
+// SUBCATEGORÍAS
+// ==============================================================================
+
+// Inicia el proceso de subcategorías
+function initiateSubcategoryProcess(category) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const subcategories = data.Categories[category];
+    if (subcategories) {
+        const subcategoryList = Object.keys(subcategories);
+        const description = sessionStorage.getItem('currentDescription');		
+        const subcategoryMessage = createSubcategoryPrompt(category, subcategoryList, description);
+        sendSubcategoryMessageToServer(subcategoryMessage, category);
+    } else {
+        console.error('No se encontraron subcategorías para la categoría seleccionada.');
+    }
+}
+
+// Función para crear el mensaje del primer prompt para subcategorías
+function createSubcategoryPrompt(selectedCategory, subcategories, description) {
+    let firstSubcategory = subcategories[0]; // Asumiendo que siempre habrá al menos una subcategoría
+    let promptMessage = `You are assisting in navigating a web application that categorizes items. Based on the selected category "${selectedCategory}" and the initial description provided ("${description}"), please choose the most appropriate subcategory from the list below. If the description applies equally across multiple subcategories or if there is insufficient context to distinguish them, default to selecting '${firstSubcategory}'.\n`;
+    promptMessage += `Subcategories: ${subcategories.join(', ')}.\n`;
+    promptMessage += `Respond only with the subcategory name.\n`;
+
+    return promptMessage;
+}
+
+// Envía el mensaje de subcategoría al servidor y maneja la respuesta
+function sendSubcategoryMessageToServer(message, category) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const subcategory = getSelectedCategory(data);
+        if (subcategory) {
+            processSubcategory(category, subcategory, message);
+        } else {
+            displayError('Subcategoría válida no encontrada.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+// Procesa la subcategoría seleccionada
+function processSubcategory(category, subcategory, originalMessage) {
+    displayChatGPTResponseSubcategory(subcategory, originalMessage);
+	initiateItemDescriptionProcess(category, subcategory);
+}
+
+
+
+// Visualiza la respuesta de ChatGPT para subcategorías
+function displayChatGPTResponseSubcategory(subcategory, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las subcategorías enviadas y la subcategoría seleccionada
+    const originalSubcategories = originalMessage.split('\n')[1].replace('Subcategories: ', '');
+
+    const subcategoriesSent = document.createElement('p');
+    subcategoriesSent.className = 'category-title';
+    subcategoriesSent.textContent = 'Subcategories sent to ChatGPT:';
+    responseElement.appendChild(subcategoriesSent);
+
+    const subcategoriesList = document.createElement('p');
+    subcategoriesList.textContent = originalSubcategories;
+    responseElement.appendChild(subcategoriesList);
+
+    const selectedSubcategoryPrompt = document.createElement('p');
+    selectedSubcategoryPrompt.className = 'category-title chatgpt-response';
+    selectedSubcategoryPrompt.textContent = 'Selected subcategory by ChatGPT:';
+    responseElement.appendChild(selectedSubcategoryPrompt);
+
+    const selectedSubcategoryName = document.createElement('p');
+	selectedSubcategoryName.className = 'category-content chatgpt-response';
+    selectedSubcategoryName.textContent = subcategory;
+    responseElement.appendChild(selectedSubcategoryName);
+}
+
+
+
+/// ==============================================================================
+// DESCRIPCIONES DE ÍTEMS
+// ==============================================================================
+
+// Inicia el proceso de descripciones de ítems
+function initiateItemDescriptionProcess(category, subcategory) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const items = data.Categories[category]?.[subcategory]?.Items; // Asegúrate de usar el acceso seguro a propiedades
+
+    if (items) {
+        const descriptions = items.map(item => item.description); // Recolectar descripciones de cada ítem
+        console.log("Descripciones de ítems:", descriptions);
+		const userDescription = sessionStorage.getItem('currentDescription');	
+        const itemDescriptionMessage = createItemDescriptionPrompt(subcategory, descriptions, userDescription);
+        sendItemDescriptionMessageToServer(itemDescriptionMessage, subcategory);
+    } else {
+        console.error('No se encontraron ítems para la subcategoría seleccionada:', subcategory);
+    }
+}
+
+// Función para crear el mensaje del primer prompt para descripciones de ítems
+function createItemDescriptionPrompt(subcategory, itemDescriptions, userDescription) {
+    let promptMessage = `Based on the selected subcategory "${subcategory}" and user's description "${userDescription}", please choose the most relevant item from the descriptions below.\n`;
+    promptMessage += `Item Descriptions: ${itemDescriptions.join(', ')}.\n`;
+    promptMessage += `Respond only with the description or a brief identifier.\n`;
+    return promptMessage;
+}
+
+// Envía el mensaje de descripción de ítems al servidor y maneja la respuesta
+function sendItemDescriptionMessageToServer(message, subcategory) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const selectedItemDescription = getSelectedItemDescription(data);
+        if (selectedItemDescription) {
+            displayItemDescriptionResponse(selectedItemDescription, message);
+			displayClassificationResults(selectedItemDescription);			
+        } else {
+            displayError('Descripción de ítem válida no encontrada.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+
+// Extrae la descripción del ítem seleccionada de la respuesta del servidor
+function getSelectedItemDescription(data) {
+    if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+        const responseContent = data.choices[0].message.content;
+        if (responseContent.startsWith("ERROR:")) {
+            displayError(responseContent);
+            return null;
+        } else {
+            return responseContent;
+        }
+    }
+    return null;
+}
+
+
+// Muestra la descripción de ítem seleccionada
+function displayItemDescriptionResponse(selectedItemDescription, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las descripciones de ítems enviadas
+    const originalItemDescriptions = originalMessage.split('\n')[1].replace('Item Descriptions: ', '').split(".,");
+    const itemDescriptionsSent = document.createElement('p');
+    itemDescriptionsSent.className = 'category-title';
+    itemDescriptionsSent.textContent = 'Item descriptions sent to ChatGPT:';
+    responseElement.appendChild(itemDescriptionsSent);
+
+    const itemDescriptionsContainer = document.createElement('div');
+    itemDescriptionsContainer.className = 'item-descriptions-container';
+
+    originalItemDescriptions.forEach(description => {
+        if (description.trim() !== "") {
+            const itemDescription = document.createElement('p');
+            itemDescription.className = 'item-description';
+            itemDescription.textContent = `"${description.trim()}."`;
+            itemDescriptionsContainer.appendChild(itemDescription);
+        }
+    });
+    responseElement.appendChild(itemDescriptionsContainer);
+
+    // Mostrar la descripción de ítem seleccionada
+    const selectedItemDescriptionPrompt = document.createElement('p');
+    selectedItemDescriptionPrompt.className = 'category-title chatgpt-response';
+    selectedItemDescriptionPrompt.textContent = 'Selected item description by ChatGPT:';
+    responseElement.appendChild(selectedItemDescriptionPrompt);
+
+    const selectedItemDescriptionText = document.createElement('p');
+    selectedItemDescriptionText.className = 'category-content chatgpt-response';
+    selectedItemDescriptionText.textContent = `"${selectedItemDescription}"`;
+    responseElement.appendChild(selectedItemDescriptionText);
+}
+
+
+function displayClassificationResults(selectedItemDescription) {
+    const jsonData = JSON.parse(sessionStorage.getItem('categoryData'));
+    let selectedItemDetails = null;
+
+    // Buscar en todas las categorías y subcategorías hasta encontrar el ítem
+    for (let category in jsonData.Categories) {
+        for (let subcategory in jsonData.Categories[category]) {
+            const items = jsonData.Categories[category][subcategory].Items;
+            selectedItemDetails = items.find(item => item.description === selectedItemDescription);
+            if (selectedItemDetails) break;
+        }
+        if (selectedItemDetails) break;
+    }
+
+    if (!selectedItemDetails) {
+        console.error('Ítem no encontrado.');
+        return;
+    }
+
+    const resultText = document.getElementById('resultText');
+    if (!resultText) {
+        console.error('Elemento con ID "resultText" no encontrado.');
+        return;
+    }
+
+    // Limpia el contenido anterior
+    resultText.innerHTML = '';
+    
+    // Add the introductory phrase
+    const introParagraph = document.createElement('p');
+    introParagraph.textContent = 'Based on your initial description of the new item, ChatGPT has identified the most similar item in your uploaded collection:';
+    introParagraph.style.fontSize = '16px'; // Aumenta el tamaño del texto
+    introParagraph.style.fontWeight = 'bold'; // Hace el texto más grueso
+    resultText.appendChild(introParagraph);
+    
+    // Construir y mostrar los detalles del ítem seleccionado usando un nuevo elemento div
+    const detailsDiv = document.createElement('div');
+    detailsDiv.style.color = '#333'; // Cambia el color a un gris oscuro
+    detailsDiv.style.border = '1px solid #ccc'; // Añade un borde gris claro
+    detailsDiv.style.padding = '10px'; // Añade padding para separar el texto del borde
+    detailsDiv.style.marginTop = '10px'; // Añade un margen superior para separarlo del párrafo
+    detailsDiv.style.borderRadius = '5px'; // Bordes redondeados
+    detailsDiv.style.backgroundColor = '#f9f9f9'; // Fondo ligeramente gris para destacar como ficha
+    detailsDiv.innerHTML = `
+        <strong>ID:</strong> ${selectedItemDetails.id}<br>
+        <strong>Name:</strong> ${selectedItemDetails.name}<br>
+        <strong>Description:</strong> ${selectedItemDetails.description}<br>
+        <strong>Additional Info:</strong> ${selectedItemDetails.additional_info}<br>
+        <strong>Tags:</strong> ${selectedItemDetails.tags.join(', ')}
+    `;
+    resultText.appendChild(detailsDiv);
+}
+
+

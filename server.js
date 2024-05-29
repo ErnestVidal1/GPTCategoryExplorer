@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 // Middleware para parsear JSON, manejar la subida de archivos y sesiones
 app.use(express.json());
 app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
@@ -24,6 +25,12 @@ app.use(session({
 
 // Middleware para parsear texto plano
 app.use(express.text());
+
+// Endpoint para obtener el estado del botón
+app.get('/api/button-status', (req, res) => {
+    const isButtonEnabled = process.env.IS_BUTTON_ENABLED === 'true';
+    res.json({ isEnabled: isButtonEnabled });
+});
 
 app.post('/upload-json', (req, res) => {
     if (!req.files || !req.files.file) {
