@@ -163,7 +163,7 @@ function createCategoryPrompt(description, categories) {
 function sendCategoryMessageToServer(message) {
     fetch('/api/chat', {
         method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
+        headers: {'Content-Type': 'application/json'},
         body: message
     })
     .then(response => {
