@@ -163,8 +163,8 @@ function createCategoryPrompt(description, categories) {
 function sendCategoryMessageToServer(message) {
     fetch('/api/chat', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: message
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })  // Enviar el mensaje como un objeto JSON
     })
     .then(response => {
         if (!response.ok) {
@@ -174,54 +174,40 @@ function sendCategoryMessageToServer(message) {
         return response.json();  // Parsea la respuesta como JSON solo si la respuesta fue exitosa
     })
     .then(data => {
-        // Procesa los datos recibidos del servidor
-        const category = getSelectedCategory(data);  // Suponiendo que esta función analiza la respuesta para extraer la categoría
+        const category = getSelectedCategory(data);
         if (category) {
-            // Si se encontró una categoría válida, procesa la categoría
-            processCategory(category, message);  // Suponiendo que esta función hace algo útil con la categoría y el mensaje
+            processCategory(category, message);
         } else {
-            // Si no se encontró una categoría válida, muestra un error en la interfaz de usuario
-            displayError('No valid category found.');  // Suponiendo que esta función muestra el error en la interfaz de usuario
+            displayError('No valid category found.');
         }
     })
     .catch(error => {
-        // Captura cualquier error en la cadena de promesas y lo loguea
         console.error('Error al procesar tu solicitud:', error);
-        displayError('Failed to process your request.');  // Informa al usuario que la solicitud falló
+        displayError('Failed to process your request.');
     });
 }
 
-// Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {
-    if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-        const responseContent = data.choices[0].message.content;
-        if (responseContent.startsWith("ERROR:")) {
-            displayError(responseContent);
-            return null;
-        } else {
-            return responseContent;
-        }
-    }
-    return null;
+    // Supongamos que esta función extrae y devuelve la categoría de los datos proporcionados
+    // Debería implementarse de acuerdo a cómo esté estructurada la respuesta del servidor
+    return data.category;
 }
 
-// Procesa la categoría seleccionada, obteniendo subcategorías si están disponibles
-function processCategory(category, originalMessage) {
-    const jsonData = sessionStorage.getItem('categoryData');
-    if (!jsonData) {
-        console.error('Datos de categoría no encontrados.');
-        return;
-    }
+function processCategory(category, message) {
+    // Aquí podrías agregar la lógica para hacer algo con la categoría y el mensaje
+    console.log(`Processing category: ${category} with message: ${message}`);
+}
 
-    const data = JSON.parse(jsonData);
-    const subcategories = data.Categories[category];
-    if (subcategories) {
-        displayChatGPTResponseCategory(category, originalMessage);
-		initiateSubcategoryProcess(category);
-    } else {
-        displayError('No se encontraron subcategorías para la categoría seleccionada.');
+function displayError(message) {
+    // Muestra un mensaje de error en la interfaz de usuario
+    // Esto podría ser un modal, un toast, o simplemente un elemento en la página que muestre el error
+    console.error(message);  // También loguea el error en la consola
+    const errorElement = document.getElementById('errorMessage');
+    if (errorElement) {
+        errorElement.textContent = message;
     }
 }
+
 
 // Visualiza la respuesta de ChatGPT para categorías
 function displayChatGPTResponseCategory(category, originalMessage) {
