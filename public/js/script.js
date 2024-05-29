@@ -141,6 +141,7 @@ function initiateCategoryProcess() {
     if (data && data.Categories) {
         const categories = Object.keys(data.Categories);
         const promptMessage = createCategoryPrompt(description, categories);
+		alert(promptMessage);
         sendCategoryMessageToServer(promptMessage);
     } else {
         console.log('No se encontraron categorías en el JSON subido.');
