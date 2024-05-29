@@ -26,11 +26,6 @@ app.use(session({
 // Middleware para parsear texto plano
 app.use(express.text());
 
-// Endpoint para obtener el estado del botón
-app.get('/api/button-status', (req, res) => {
-    const isButtonEnabled = process.env.IS_BUTTON_ENABLED === 'true';
-    res.json({ isEnabled: isButtonEnabled });
-});
 
 app.post('/upload-json', (req, res) => {
     if (!req.files || !req.files.file) {

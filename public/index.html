@@ -57,9 +57,8 @@
         
         <div class="button-container">
             <div class="left-buttons">
-                <a id="enableLink" href="#" class="enable-link">Enable button</a>
                 <p id="enabledMessage" class="enabled-message" style="display: none;">You can use the tool freely for now. If the OpenAI API usage limit is exceeded, you will need to request access via email.</p>
-                <button id="startExploration" disabled>Start Exploration with ChatGPT</button>
+                <button id="startExploration">Start Exploration with ChatGPT</button>
             </div>
             <button id="clearCategories" class="right-button" style="white-space: nowrap;">Clear ChatGPT Navigation Path</button>
         </div>
@@ -82,48 +81,24 @@
     <footer>
         GPTCategoryExplorer © 2024
     </footer>
-    <script src="js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const readMoreLink = document.getElementById('readMoreLink');
-            const moreText = document.getElementById('moreText');
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const readMoreLink = document.getElementById('readMoreLink');
+        const moreText = document.getElementById('moreText');
 
-            readMoreLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                if (moreText.classList.contains('hidden')) {
-                    moreText.classList.remove('hidden');
-                    readMoreLink.textContent = 'Read less';
-                } else {
-                    moreText.classList.add('hidden');
-                    readMoreLink.textContent = 'Read more';
-                }
-            });
-
-            fetch('/api/button-status')
-                .then(response => response.json())
-                .then(data => {
-                    const startButton = document.getElementById('startExploration');
-                    const enableLink = document.getElementById('enableLink');
-                    const enabledMessage = document.getElementById('enabledMessage');
-
-                    if (data.isEnabled) {
-                        startButton.disabled = false;
-                        enableLink.style.display = 'none';
-                        enabledMessage.style.display = 'block';
-                    } else {
-                        startButton.disabled = true;
-                        enableLink.style.display = 'block';
-                        enabledMessage.style.display = 'none';
-                        enableLink.addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('The button to start the ChatGPT consultation is disabled because the OpenAI API usage limit has been exceeded for this month. If you would like free access to test the tool, please send an email to the developer: ernestvida1@gmail.com');
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al verificar el estado del botón:', error);
-                });
+        readMoreLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (moreText.classList.contains('hidden')) {
+                moreText.classList.remove('hidden');
+                readMoreLink.textContent = 'Read less';
+            } else {
+                moreText.classList.add('hidden');
+                readMoreLink.textContent = 'Read more';
+            }
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
