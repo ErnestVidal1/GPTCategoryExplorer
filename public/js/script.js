@@ -1,1 +1,508 @@
-const _0xabf91a=_0x3293;function _0x3293(_0xbbd6aa,_0x5133f2){const _0x159d50=_0x159d();return _0x3293=function(_0x32934b,_0x350312){_0x32934b=_0x32934b-0x75;let _0x386454=_0x159d50[_0x32934b];return _0x386454;},_0x3293(_0xbbd6aa,_0x5133f2);}(function(_0x3bbc43,_0x290e69){const _0x53b50a=_0x3293,_0x157067=_0x3bbc43();while(!![]){try{const _0x38ea6f=-parseInt(_0x53b50a(0xc6))/0x1+parseInt(_0x53b50a(0xd0))/0x2+parseInt(_0x53b50a(0xa0))/0x3+parseInt(_0x53b50a(0xe4))/0x4+parseInt(_0x53b50a(0xd6))/0x5*(-parseInt(_0x53b50a(0xd1))/0x6)+parseInt(_0x53b50a(0xde))/0x7*(parseInt(_0x53b50a(0xa8))/0x8)+-parseInt(_0x53b50a(0xda))/0x9*(parseInt(_0x53b50a(0xe1))/0xa);if(_0x38ea6f===_0x290e69)break;else _0x157067['push'](_0x157067['shift']());}catch(_0x130d88){_0x157067['push'](_0x157067['shift']());}}}(_0x159d,0x207c6),document['addEventListener'](_0xabf91a(0xe0),function(){setupButtonListeners(),initialize(),setupFileUploadListener();}));function initialize(){const _0x39b9ed=_0xabf91a;console[_0x39b9ed(0x80)]('Initialization\x20complete.');}function _0x159d(){const _0x5f8c9d=['border','result','file-upload','appendChild','text/plain','description','Item\x20Descriptions:\x20','Respond\x20only\x20with\x20the\x20subcategory\x20name.\x0a','10px','\x0a\x20\x20\x20\x20','Elemento\x20con\x20ID\x20\x22resultText\x22\x20no\x20encontrado.','No\x20se\x20encontraron\x20categorías\x20en\x20el\x20JSON\x20subido.','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<strong>Additional\x20Info:</strong>\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<strong>ID:</strong>\x20','type','Datos\x20de\x20categoría\x20no\x20encontrados.','Items','5px','\x22.\x0a','content','\x22\x20and\x20user\x27s\x20description\x20\x22','click','category-title','log','\x27.\x0a','choices','target','onchange','Subcategories:\x20','files','forEach','style','message','Based\x20on\x20the\x20selected\x20subcategory\x20\x22','then','#f9f9f9','Descripción\x20de\x20ítem\x20válida\x20no\x20encontrada.','Elemento\x20con\x20ID\x20\x22categoryList\x22\x20no\x20encontrado.','parse','fontWeight','userNeeds','marginTop','backgroundColor','value','setItem','innerHTML','currentDescription','\x22),\x20please\x20choose\x20the\x20most\x20appropriate\x20subcategory\x20from\x20the\x20list\x20below.\x20If\x20the\x20description\x20applies\x20equally\x20across\x20multiple\x20subcategories\x20or\x20if\x20there\x20is\x20insufficient\x20context\x20to\x20distinguish\x20them,\x20default\x20to\x20selecting\x20\x27','error-message','find','Please\x20ensure\x20your\x20response\x20contains\x20only\x20the\x20category\x20name\x20or\x20an\x20error\x20message\x20as\x20specified.\x0a','className','category-title\x20chatgpt-response','item-description','createElement','215013ZeJCJD','resultText','Error\x20al\x20procesar\x20tu\x20solicitud:\x20','.json','Categories','fontSize','onload','json','884648WONTsN','split','trim','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<strong>Description:</strong>\x20','No\x20se\x20encontraron\x20datos\x20de\x20categorías.\x20Por\x20favor,\x20sube\x20un\x20archivo\x20JSON\x20primero.','16px','getItem','\x22,\x20please\x20choose\x20the\x20most\x20relevant\x20item\x20from\x20the\x20descriptions\x20below.\x0a','Categories\x20sent\x20to\x20ChatGPT:','\x22\x20and\x20the\x20initial\x20description\x20provided\x20(\x22','1px\x20solid\x20#ccc','Categories:\x20','textContent','keys','categoryData','Categorías\x20y\x20Subcategorías:','/api/chat','Subcategoría\x20válida\x20no\x20encontrada.','Descripciones\x20de\x20ítems:','ERROR:','join','Selected\x20subcategory\x20by\x20ChatGPT:','categoryList','You\x20are\x20assisting\x20in\x20navigating\x20a\x20web\x20application\x20that\x20categorizes\x20items.\x20Based\x20on\x20the\x20selected\x20category\x20\x22','#333','Por\x20favor,\x20describe\x20tu\x20artículo.','Ítem\x20no\x20encontrado.','accept','color','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<strong>Tags:</strong>\x20','107713uNDrnV','name','replace','category-content\x20chatgpt-response','Description:\x20\x22','catch','bold','additional_info','getElementById','Subcategories\x20sent\x20to\x20ChatGPT:','58038QKWWeC','18924DukTDv','preventDefault','readAsText','Respond\x20only\x20with\x20the\x20description\x20or\x20a\x20brief\x20identifier.\x0a','addEventListener','90KFGgXn','error','POST','Based\x20on\x20your\x20initial\x20description\x20of\x20the\x20new\x20item,\x20ChatGPT\x20has\x20identified\x20the\x20most\x20similar\x20item\x20in\x20your\x20uploaded\x20collection:','328743TqXoJp','startExploration','Error:\x20','Selected\x20item\x20description\x20by\x20ChatGPT:','14awGVNc','No\x20se\x20encontraron\x20ítems\x20para\x20la\x20subcategoría\x20seleccionada:','DOMContentLoaded','20dLNAXf','startsWith','item-descriptions-container','194996pWqwya','div','Archivo\x20JSON\x20subido\x20y\x20almacenado\x20correctamente.','No\x20se\x20encontraron\x20subcategorías\x20para\x20la\x20categoría\x20seleccionada.'];_0x159d=function(){return _0x5f8c9d;};return _0x159d();}function setupFileUploadListener(){const _0x3999e3=_0xabf91a,_0x5318a7=document['getElementById'](_0x3999e3(0xea));_0x5318a7[_0x3999e3(0xc3)]=_0x3999e3(0xa3),_0x5318a7[_0x3999e3(0x84)]=_0x64fe6e=>{const _0x535821=_0x3999e3,_0x41dcfb=_0x64fe6e[_0x535821(0x83)][_0x535821(0x86)][0x0];if(_0x41dcfb){const _0x26203c=new FileReader();_0x26203c[_0x535821(0xa6)]=function(_0x48af1c){const _0x21c724=_0x535821,_0x43fc56=_0x48af1c[_0x21c724(0x83)][_0x21c724(0xe9)];sessionStorage[_0x21c724(0x95)](_0x21c724(0xb6),_0x43fc56),console[_0x21c724(0x80)](_0x21c724(0xe6));const _0x441037=JSON[_0x21c724(0x8f)](_0x43fc56),_0x46205f=_0x441037[_0x21c724(0xa4)];console[_0x21c724(0x80)]('Categorías\x20y\x20Subcategorías:');for(const _0x366b8f in _0x46205f){console[_0x21c724(0x80)](_0x366b8f);const _0x28c2e1=_0x46205f[_0x366b8f];for(const _0x27c54d in _0x28c2e1){console['log']('\x20\x20-\x20'+_0x27c54d);}}},_0x26203c[_0x535821(0xd3)](_0x41dcfb);}};}function uploadTemplateCategories(_0xb66140){const _0x2cf8ab=_0xabf91a;_0xb66140[_0x2cf8ab(0xd2)]();const _0x501fd3=document['createElement']('input');_0x501fd3[_0x2cf8ab(0x77)]='file',_0x501fd3[_0x2cf8ab(0xc3)]=_0x2cf8ab(0xa3),_0x501fd3[_0x2cf8ab(0x84)]=_0x57a68c=>{const _0x5cb9de=_0x2cf8ab,_0x251313=_0x57a68c[_0x5cb9de(0x83)][_0x5cb9de(0x86)][0x0];if(_0x251313){const _0x5d3e5e=new FileReader();_0x5d3e5e[_0x5cb9de(0xa6)]=function(_0x163d87){const _0x11e69f=_0x5cb9de,_0x100cb2=_0x163d87[_0x11e69f(0x83)][_0x11e69f(0xe9)];sessionStorage[_0x11e69f(0x95)](_0x11e69f(0xb6),_0x100cb2),console[_0x11e69f(0x80)](_0x11e69f(0xe6));const _0x1e6998=JSON[_0x11e69f(0x8f)](_0x100cb2),_0x19be0e=_0x1e6998[_0x11e69f(0xa4)];console[_0x11e69f(0x80)](_0x11e69f(0xb7));for(const _0xfced79 in _0x19be0e){console['log'](_0xfced79);const _0x2cf964=_0x19be0e[_0xfced79];for(const _0xa841d2 in _0x2cf964){console['log']('\x20\x20-\x20'+_0xa841d2);}}},_0x5d3e5e['readAsText'](_0x251313);}},_0x501fd3['click']();}function displayError(_0xe16760){const _0x43171c=_0xabf91a,_0x5ad045=document['getElementById'](_0x43171c(0xbe)),_0xdbf55b=document[_0x43171c(0x9f)]('li');_0xdbf55b['className']=_0x43171c(0x99),_0xdbf55b[_0x43171c(0xb4)]=_0x43171c(0xdc)+_0xe16760,_0x5ad045[_0x43171c(0xeb)](_0xdbf55b);}function setupButtonListeners(){const _0x7c699b=_0xabf91a,_0x268938=document[_0x7c699b(0xce)](_0x7c699b(0xdb));_0x268938&&_0x268938[_0x7c699b(0xd5)](_0x7c699b(0x7e),function(){const _0x466a73=_0x7c699b;console[_0x466a73(0x80)]('Click\x20registrado'),initiateCategoryProcess();});const _0x199d2b=document[_0x7c699b(0xce)]('clearCategories');_0x199d2b&&_0x199d2b[_0x7c699b(0xd5)](_0x7c699b(0x7e),function(){clearCategories();});}function clearCategories(){const _0x3558ed=_0xabf91a,_0x3515fa=document[_0x3558ed(0xce)](_0x3558ed(0xbe));_0x3515fa&&(_0x3515fa[_0x3558ed(0x96)]='');}function initiateCategoryProcess(){const _0x53dc1e=_0xabf91a,_0x3e86bb=document[_0x53dc1e(0xce)](_0x53dc1e(0x91))[_0x53dc1e(0x94)]['trim']();sessionStorage[_0x53dc1e(0x95)](_0x53dc1e(0x97),_0x3e86bb);if(!_0x3e86bb){console[_0x53dc1e(0x80)](_0x53dc1e(0xc1));return;}const _0x291cc8=sessionStorage[_0x53dc1e(0xae)]('categoryData');if(!_0x291cc8){console[_0x53dc1e(0x80)](_0x53dc1e(0xac));return;}const _0x445d65=JSON['parse'](_0x291cc8);if(_0x445d65&&_0x445d65['Categories']){const _0x183da2=Object[_0x53dc1e(0xb5)](_0x445d65[_0x53dc1e(0xa4)]),_0x233760=createCategoryPrompt(_0x3e86bb,_0x183da2);sendCategoryMessageToServer(_0x233760);}else console[_0x53dc1e(0x80)](_0x53dc1e(0xf3));}function createCategoryPrompt(_0x36291d,_0x49a539){const _0x2b3270=_0xabf91a;let _0x12fa81='Based\x20on\x20the\x20description\x20provided,\x20please\x20choose\x20the\x20most\x20appropriate\x20category\x20from\x20the\x20list\x20below.\x20Respond\x20with\x20only\x20the\x20name\x20of\x20the\x20selected\x20category\x20exactly\x20as\x20it\x20appears,\x20even\x20if\x20it\x20contains\x20typos\x20or\x20errors.\x20If\x20the\x20description\x20matches\x20multiple\x20categories\x20equally,\x20choose\x20the\x20one\x20that\x20best\x20represents\x20the\x20primary\x20context\x20of\x20the\x20description.\x20If\x20no\x20category\x20is\x20appropriate,\x20begin\x20your\x20response\x20with\x20\x22ERROR:\x22\x20followed\x20by\x20your\x20reason.\x0a';return _0x12fa81+=_0x2b3270(0xca)+_0x36291d+_0x2b3270(0x7b),_0x12fa81+='Categories:\x20'+_0x49a539[_0x2b3270(0xbc)](',\x20')+'.\x0a',_0x12fa81+=_0x2b3270(0x9b),_0x12fa81;}function sendCategoryMessageToServer(_0x3959eb){const _0x4621bf=_0xabf91a;fetch(_0x4621bf(0xb8),{'method':_0x4621bf(0xd8),'headers':{'Content-Type':_0x4621bf(0xec)},'body':_0x3959eb})[_0x4621bf(0x8b)](_0x223244=>_0x223244[_0x4621bf(0xa7)]())['then'](_0x28869c=>{const _0x465c7e=getSelectedCategory(_0x28869c);_0x465c7e?processCategory(_0x465c7e,_0x3959eb):displayError('No\x20valid\x20category\x20found.');})[_0x4621bf(0xcb)](_0x3646ad=>{const _0x101cb9=_0x4621bf;console[_0x101cb9(0xd7)](_0x101cb9(0xa2)+_0x3646ad);});}function getSelectedCategory(_0x12e825){const _0x58e7e1=_0xabf91a;if(_0x12e825['choices']&&_0x12e825['choices'][0x0]&&_0x12e825[_0x58e7e1(0x82)][0x0][_0x58e7e1(0x89)]&&_0x12e825['choices'][0x0][_0x58e7e1(0x89)][_0x58e7e1(0x7c)]){const _0x2ae907=_0x12e825[_0x58e7e1(0x82)][0x0][_0x58e7e1(0x89)][_0x58e7e1(0x7c)];return _0x2ae907['startsWith'](_0x58e7e1(0xbb))?(displayError(_0x2ae907),null):_0x2ae907;}return null;}function processCategory(_0x5190cf,_0x26c813){const _0x2c185d=_0xabf91a,_0x55657b=sessionStorage[_0x2c185d(0xae)]('categoryData');if(!_0x55657b){console['error']('Datos\x20de\x20categoría\x20no\x20encontrados.');return;}const _0x53eaed=JSON[_0x2c185d(0x8f)](_0x55657b),_0x1d9236=_0x53eaed[_0x2c185d(0xa4)][_0x5190cf];_0x1d9236?(displayChatGPTResponseCategory(_0x5190cf,_0x26c813),initiateSubcategoryProcess(_0x5190cf)):displayError(_0x2c185d(0xe7));}function displayChatGPTResponseCategory(_0xe178c3,_0x251b0a){const _0x4c5344=_0xabf91a,_0x225842=document[_0x4c5344(0xce)]('categoryList');if(!_0x225842){console[_0x4c5344(0xd7)]('Elemento\x20con\x20ID\x20\x22categoryList\x22\x20no\x20encontrado.');return;}const _0xff71d4=_0x251b0a[_0x4c5344(0xa9)]('\x0a')[0x2][_0x4c5344(0xc8)](_0x4c5344(0xb3),''),_0x1e07da=document[_0x4c5344(0x9f)]('p');_0x1e07da[_0x4c5344(0x9c)]=_0x4c5344(0x7f),_0x1e07da[_0x4c5344(0xb4)]=_0x4c5344(0xb0),_0x225842['appendChild'](_0x1e07da);const _0x4b6469=document['createElement']('p');_0x4b6469[_0x4c5344(0xb4)]=_0xff71d4,_0x225842[_0x4c5344(0xeb)](_0x4b6469);const _0x249ed5=document[_0x4c5344(0x9f)]('p');_0x249ed5[_0x4c5344(0x9c)]=_0x4c5344(0x9d),_0x249ed5[_0x4c5344(0xb4)]='Selected\x20category\x20by\x20ChatGPT:',_0x225842[_0x4c5344(0xeb)](_0x249ed5);const _0x492888=document[_0x4c5344(0x9f)]('p');_0x492888[_0x4c5344(0x9c)]=_0x4c5344(0xc9),_0x492888[_0x4c5344(0xb4)]=_0xe178c3,_0x225842[_0x4c5344(0xeb)](_0x492888);}function initiateSubcategoryProcess(_0x188a8e){const _0x2926e4=_0xabf91a,_0x446caa=sessionStorage['getItem']('categoryData');if(!_0x446caa){console[_0x2926e4(0xd7)](_0x2926e4(0x78));return;}const _0x59f268=JSON[_0x2926e4(0x8f)](_0x446caa),_0x2d5c40=_0x59f268['Categories'][_0x188a8e];if(_0x2d5c40){const _0x3afc43=Object[_0x2926e4(0xb5)](_0x2d5c40),_0x38460f=sessionStorage['getItem'](_0x2926e4(0x97)),_0x4fbdc9=createSubcategoryPrompt(_0x188a8e,_0x3afc43,_0x38460f);sendSubcategoryMessageToServer(_0x4fbdc9,_0x188a8e);}else console[_0x2926e4(0xd7)](_0x2926e4(0xe7));}function createSubcategoryPrompt(_0x25380d,_0x3a9580,_0x2a5116){const _0x4dc6b6=_0xabf91a;let _0x3dc1fa=_0x3a9580[0x0],_0x416fb5=_0x4dc6b6(0xbf)+_0x25380d+_0x4dc6b6(0xb1)+_0x2a5116+_0x4dc6b6(0x98)+_0x3dc1fa+_0x4dc6b6(0x81);return _0x416fb5+=_0x4dc6b6(0x85)+_0x3a9580[_0x4dc6b6(0xbc)](',\x20')+'.\x0a',_0x416fb5+=_0x4dc6b6(0xef),_0x416fb5;}function sendSubcategoryMessageToServer(_0xd862ef,_0x4f6f0d){const _0x2ca2f4=_0xabf91a;fetch(_0x2ca2f4(0xb8),{'method':_0x2ca2f4(0xd8),'headers':{'Content-Type':'text/plain'},'body':_0xd862ef})[_0x2ca2f4(0x8b)](_0x48d7a8=>_0x48d7a8['json']())[_0x2ca2f4(0x8b)](_0x206876=>{const _0x5bc396=_0x2ca2f4,_0x51ed5f=getSelectedCategory(_0x206876);_0x51ed5f?processSubcategory(_0x4f6f0d,_0x51ed5f,_0xd862ef):displayError(_0x5bc396(0xb9));})[_0x2ca2f4(0xcb)](_0x689b7b=>{const _0x4439bb=_0x2ca2f4;console[_0x4439bb(0xd7)](_0x4439bb(0xa2)+_0x689b7b);});}function processSubcategory(_0x48263c,_0x9c28a6,_0x4aeb42){displayChatGPTResponseSubcategory(_0x9c28a6,_0x4aeb42),initiateItemDescriptionProcess(_0x48263c,_0x9c28a6);}function displayChatGPTResponseSubcategory(_0x4da75f,_0x25d927){const _0x304348=_0xabf91a,_0x29e00c=document[_0x304348(0xce)]('categoryList');if(!_0x29e00c){console[_0x304348(0xd7)](_0x304348(0x8e));return;}const _0x39e443=_0x25d927[_0x304348(0xa9)]('\x0a')[0x1]['replace'](_0x304348(0x85),''),_0x31b61c=document[_0x304348(0x9f)]('p');_0x31b61c[_0x304348(0x9c)]=_0x304348(0x7f),_0x31b61c[_0x304348(0xb4)]=_0x304348(0xcf),_0x29e00c[_0x304348(0xeb)](_0x31b61c);const _0x1d8328=document[_0x304348(0x9f)]('p');_0x1d8328[_0x304348(0xb4)]=_0x39e443,_0x29e00c[_0x304348(0xeb)](_0x1d8328);const _0x11f19f=document[_0x304348(0x9f)]('p');_0x11f19f[_0x304348(0x9c)]='category-title\x20chatgpt-response',_0x11f19f['textContent']=_0x304348(0xbd),_0x29e00c['appendChild'](_0x11f19f);const _0x54c571=document[_0x304348(0x9f)]('p');_0x54c571[_0x304348(0x9c)]='category-content\x20chatgpt-response',_0x54c571[_0x304348(0xb4)]=_0x4da75f,_0x29e00c[_0x304348(0xeb)](_0x54c571);}function initiateItemDescriptionProcess(_0xac7aa1,_0xe25146){const _0x17d438=_0xabf91a,_0x56ae73=sessionStorage['getItem'](_0x17d438(0xb6));if(!_0x56ae73){console[_0x17d438(0xd7)]('Datos\x20de\x20categoría\x20no\x20encontrados.');return;}const _0x58ab96=JSON[_0x17d438(0x8f)](_0x56ae73),_0x51c025=_0x58ab96[_0x17d438(0xa4)][_0xac7aa1]?.[_0xe25146]?.[_0x17d438(0x79)];if(_0x51c025){const _0x7f9c81=_0x51c025['map'](_0x45d1cf=>_0x45d1cf['description']);console[_0x17d438(0x80)](_0x17d438(0xba),_0x7f9c81);const _0x1176b3=sessionStorage[_0x17d438(0xae)]('currentDescription'),_0x3844cf=createItemDescriptionPrompt(_0xe25146,_0x7f9c81,_0x1176b3);sendItemDescriptionMessageToServer(_0x3844cf,_0xe25146);}else console[_0x17d438(0xd7)](_0x17d438(0xdf),_0xe25146);}function createItemDescriptionPrompt(_0x3f2d5e,_0x589e41,_0x447dd1){const _0x4a97f5=_0xabf91a;let _0x3e38e2=_0x4a97f5(0x8a)+_0x3f2d5e+_0x4a97f5(0x7d)+_0x447dd1+_0x4a97f5(0xaf);return _0x3e38e2+='Item\x20Descriptions:\x20'+_0x589e41[_0x4a97f5(0xbc)](',\x20')+'.\x0a',_0x3e38e2+=_0x4a97f5(0xd4),_0x3e38e2;}function sendItemDescriptionMessageToServer(_0x40cb34,_0x3cb125){const _0x531266=_0xabf91a;fetch('/api/chat',{'method':_0x531266(0xd8),'headers':{'Content-Type':_0x531266(0xec)},'body':_0x40cb34})[_0x531266(0x8b)](_0x4c82ba=>_0x4c82ba[_0x531266(0xa7)]())[_0x531266(0x8b)](_0x3a8a0f=>{const _0x4dea27=_0x531266,_0x6e1f55=getSelectedItemDescription(_0x3a8a0f);_0x6e1f55?(displayItemDescriptionResponse(_0x6e1f55,_0x40cb34),displayClassificationResults(_0x6e1f55)):displayError(_0x4dea27(0x8d));})[_0x531266(0xcb)](_0x2cde4d=>{const _0x27e6c6=_0x531266;console[_0x27e6c6(0xd7)]('Error\x20al\x20procesar\x20tu\x20solicitud:\x20'+_0x2cde4d);});}function getSelectedItemDescription(_0x2fc469){const _0x775bc8=_0xabf91a;if(_0x2fc469[_0x775bc8(0x82)]&&_0x2fc469[_0x775bc8(0x82)][0x0]&&_0x2fc469[_0x775bc8(0x82)][0x0][_0x775bc8(0x89)]&&_0x2fc469[_0x775bc8(0x82)][0x0][_0x775bc8(0x89)][_0x775bc8(0x7c)]){const _0x469207=_0x2fc469[_0x775bc8(0x82)][0x0][_0x775bc8(0x89)]['content'];return _0x469207[_0x775bc8(0xe2)](_0x775bc8(0xbb))?(displayError(_0x469207),null):_0x469207;}return null;}function displayItemDescriptionResponse(_0x1b0cb6,_0xfd538e){const _0x1eeb55=_0xabf91a,_0x357316=document[_0x1eeb55(0xce)](_0x1eeb55(0xbe));if(!_0x357316){console['error'](_0x1eeb55(0x8e));return;}const _0x33f138=_0xfd538e[_0x1eeb55(0xa9)]('\x0a')[0x1][_0x1eeb55(0xc8)](_0x1eeb55(0xee),'')[_0x1eeb55(0xa9)]('.,'),_0x51afa1=document[_0x1eeb55(0x9f)]('p');_0x51afa1[_0x1eeb55(0x9c)]=_0x1eeb55(0x7f),_0x51afa1[_0x1eeb55(0xb4)]='Item\x20descriptions\x20sent\x20to\x20ChatGPT:',_0x357316[_0x1eeb55(0xeb)](_0x51afa1);const _0x33b9f6=document[_0x1eeb55(0x9f)](_0x1eeb55(0xe5));_0x33b9f6[_0x1eeb55(0x9c)]=_0x1eeb55(0xe3),_0x33f138[_0x1eeb55(0x87)](_0x53c4b5=>{const _0x34d150=_0x1eeb55;if(_0x53c4b5[_0x34d150(0xaa)]()!==''){const _0x494daf=document[_0x34d150(0x9f)]('p');_0x494daf[_0x34d150(0x9c)]=_0x34d150(0x9e),_0x494daf[_0x34d150(0xb4)]='\x22'+_0x53c4b5['trim']()+'.\x22',_0x33b9f6[_0x34d150(0xeb)](_0x494daf);}}),_0x357316[_0x1eeb55(0xeb)](_0x33b9f6);const _0x4bb9a6=document[_0x1eeb55(0x9f)]('p');_0x4bb9a6[_0x1eeb55(0x9c)]=_0x1eeb55(0x9d),_0x4bb9a6[_0x1eeb55(0xb4)]=_0x1eeb55(0xdd),_0x357316['appendChild'](_0x4bb9a6);const _0x5e0cbc=document[_0x1eeb55(0x9f)]('p');_0x5e0cbc['className']=_0x1eeb55(0xc9),_0x5e0cbc[_0x1eeb55(0xb4)]='\x22'+_0x1b0cb6+'\x22',_0x357316[_0x1eeb55(0xeb)](_0x5e0cbc);}function displayClassificationResults(_0x49db51){const _0x4fe3d5=_0xabf91a,_0xd7f526=JSON[_0x4fe3d5(0x8f)](sessionStorage[_0x4fe3d5(0xae)](_0x4fe3d5(0xb6)));let _0xb357a5=null;for(let _0x39f1b5 in _0xd7f526['Categories']){for(let _0x381aef in _0xd7f526[_0x4fe3d5(0xa4)][_0x39f1b5]){const _0x5869a1=_0xd7f526[_0x4fe3d5(0xa4)][_0x39f1b5][_0x381aef][_0x4fe3d5(0x79)];_0xb357a5=_0x5869a1[_0x4fe3d5(0x9a)](_0x2ed7d6=>_0x2ed7d6[_0x4fe3d5(0xed)]===_0x49db51);if(_0xb357a5)break;}if(_0xb357a5)break;}if(!_0xb357a5){console[_0x4fe3d5(0xd7)](_0x4fe3d5(0xc2));return;}const _0x5b4762=document[_0x4fe3d5(0xce)](_0x4fe3d5(0xa1));if(!_0x5b4762){console[_0x4fe3d5(0xd7)](_0x4fe3d5(0xf2));return;}_0x5b4762[_0x4fe3d5(0x96)]='';const _0x137885=document['createElement']('p');_0x137885['textContent']=_0x4fe3d5(0xd9),_0x137885['style'][_0x4fe3d5(0xa5)]=_0x4fe3d5(0xad),_0x137885[_0x4fe3d5(0x88)][_0x4fe3d5(0x90)]=_0x4fe3d5(0xcc),_0x5b4762[_0x4fe3d5(0xeb)](_0x137885);const _0x52b725=document['createElement']('div');_0x52b725[_0x4fe3d5(0x88)][_0x4fe3d5(0xc4)]=_0x4fe3d5(0xc0),_0x52b725['style'][_0x4fe3d5(0xe8)]=_0x4fe3d5(0xb2),_0x52b725['style']['padding']='10px',_0x52b725[_0x4fe3d5(0x88)][_0x4fe3d5(0x92)]=_0x4fe3d5(0xf0),_0x52b725[_0x4fe3d5(0x88)]['borderRadius']=_0x4fe3d5(0x7a),_0x52b725[_0x4fe3d5(0x88)][_0x4fe3d5(0x93)]=_0x4fe3d5(0x8c),_0x52b725['innerHTML']=_0x4fe3d5(0x76)+_0xb357a5['id']+'<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<strong>Name:</strong>\x20'+_0xb357a5[_0x4fe3d5(0xc7)]+_0x4fe3d5(0xab)+_0xb357a5[_0x4fe3d5(0xed)]+_0x4fe3d5(0x75)+_0xb357a5[_0x4fe3d5(0xcd)]+_0x4fe3d5(0xc5)+_0xb357a5['tags'][_0x4fe3d5(0xbc)](',\x20')+_0x4fe3d5(0xf1),_0x5b4762[_0x4fe3d5(0xeb)](_0x52b725);}
+document.addEventListener('DOMContentLoaded', function() {
+    setupButtonListeners();
+    initialize();
+    setupFileUploadListener();
+});
+
+function initialize() {
+    console.log("Initialization complete.");
+}
+
+
+function setupFileUploadListener() {
+    const uploadInput = document.getElementById('file-upload');
+    uploadInput.accept = ".json";  // Asegurarse de que solo se aceptan archivos JSON
+
+    uploadInput.onchange = event => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileContent = e.target.result;
+                sessionStorage.setItem('categoryData', fileContent);
+                console.log('Archivo JSON subido y almacenado correctamente.');
+
+                // Parsear el contenido del archivo JSON
+                const jsonContent = JSON.parse(fileContent);
+
+                // Imprimir categorías y subcategorías por si se desea consultar
+                const categories = jsonContent.Categories;
+                console.log('Categorías y Subcategorías:');
+                for (const categoryName in categories) {
+                    console.log(categoryName);  // Imprime el nombre de la categoría
+                    const subcategories = categories[categoryName];
+                    for (const subcategoryName in subcategories) {
+                        console.log(`  - ${subcategoryName}`);  // Imprime el nombre de la subcategoría con indentación
+                    }
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+}
+
+
+
+function uploadTemplateCategories(event) {
+    event.preventDefault();
+    const uploadInput = document.createElement("input");
+    uploadInput.type = "file";
+    uploadInput.accept = ".json";
+    uploadInput.onchange = event => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileContent = e.target.result;
+                sessionStorage.setItem('categoryData', fileContent);
+                console.log('Archivo JSON subido y almacenado correctamente.');
+                
+                // Parsear el contenido del archivo JSON
+                const jsonContent = JSON.parse(fileContent);
+                
+                // Imprimir categorías y subcategorías por si se desea consultar
+                const categories = jsonContent.Categories;
+                console.log('Categorías y Subcategorías:');
+                for (const categoryName in categories) {
+                    console.log(categoryName);  // Imprime el nombre de la categoría
+                    const subcategories = categories[categoryName];
+                    for (const subcategoryName in subcategories) {
+                        console.log(`  - ${subcategoryName}`);  // Imprime el nombre de la subcategoría con indentación
+                    }
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+    uploadInput.click();
+}
+
+
+
+
+function displayError(errorMessage) {
+    const responseElement = document.getElementById('categoryList');
+
+    const li = document.createElement('li');
+    li.className = 'error-message';
+    li.textContent = `Error: ${errorMessage}`;
+    responseElement.appendChild(li);
+}
+
+
+// Configura los oyentes de eventos para los botones
+function setupButtonListeners() {
+    const startButton = document.getElementById('startExploration');
+    if (startButton) {
+        startButton.addEventListener('click', function() {
+            console.log("Click registrado");
+            initiateCategoryProcess();
+        });
+    }
+
+    const clearButton = document.getElementById('clearCategories');
+    if (clearButton) {
+        clearButton.addEventListener('click', function() {
+            clearCategories();
+        });
+    }
+}
+
+function clearCategories() {
+    const categoryListElement = document.getElementById('categoryList');
+    if (categoryListElement) {
+        categoryListElement.innerHTML = ''; // Clear the displayed list
+    }
+}
+
+
+
+// ==============================================================================
+// CATEGORÍAS
+// ==============================================================================
+
+
+// Inicia el proceso de categorías
+function initiateCategoryProcess() {
+    const description = document.getElementById('userNeeds').value.trim();
+    sessionStorage.setItem('currentDescription', description); // Guardar en sessionStorage
+    if (!description) {
+        console.log("Por favor, describe tu artículo.");
+        return;
+    }
+	
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.log('No se encontraron datos de categorías. Por favor, sube un archivo JSON primero.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    if (data && data.Categories) {
+        const categories = Object.keys(data.Categories);
+        const promptMessage = createCategoryPrompt(description, categories);
+        sendCategoryMessageToServer(promptMessage);
+    } else {
+        console.log('No se encontraron categorías en el JSON subido.');
+    }
+}
+
+// Función para crear el mensaje del primer prompt para categorías
+function createCategoryPrompt(description, categories) {
+    let promptMessage = `Based on the description provided, please choose the most appropriate category from the list below. Respond with only the name of the selected category exactly as it appears, even if it contains typos or errors. If the description matches multiple categories equally, choose the one that best represents the primary context of the description. If no category is appropriate, begin your response with "ERROR:" followed by your reason.\n`;
+    promptMessage += `Description: "${description}".\n`;
+    promptMessage += `Categories: ${categories.join(', ')}.\n`;
+    promptMessage += `Please ensure your response contains only the category name or an error message as specified.\n`;
+
+    return promptMessage;
+}
+
+// Envía el mensaje de categoría al servidor y maneja la respuesta
+function sendCategoryMessageToServer(message) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const category = getSelectedCategory(data);
+        if (category) {
+            processCategory(category, message);
+        } else {
+            displayError('No valid category found.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+// Extrae la categoría seleccionada de la respuesta del servidor
+function getSelectedCategory(data) {
+    if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+        const responseContent = data.choices[0].message.content;
+        if (responseContent.startsWith("ERROR:")) {
+            displayError(responseContent);
+            return null;
+        } else {
+            return responseContent;
+        }
+    }
+    return null;
+}
+
+// Procesa la categoría seleccionada, obteniendo subcategorías si están disponibles
+function processCategory(category, originalMessage) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const subcategories = data.Categories[category];
+    if (subcategories) {
+        displayChatGPTResponseCategory(category, originalMessage);
+		initiateSubcategoryProcess(category);
+    } else {
+        displayError('No se encontraron subcategorías para la categoría seleccionada.');
+    }
+}
+
+// Visualiza la respuesta de ChatGPT para categorías
+function displayChatGPTResponseCategory(category, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las categorías enviadas y la categoría seleccionada
+    const originalCategories = originalMessage.split('\n')[2].replace('Categories: ', '');
+
+    const categoriesSent = document.createElement('p');
+    categoriesSent.className = 'category-title';
+    categoriesSent.textContent = 'Categories sent to ChatGPT:';
+    responseElement.appendChild(categoriesSent);
+
+    const categoriesList = document.createElement('p');
+    categoriesList.textContent = originalCategories;
+    responseElement.appendChild(categoriesList);
+
+    const selectedCategoryTitle = document.createElement('p');
+    selectedCategoryTitle.className = 'category-title chatgpt-response';
+    selectedCategoryTitle.textContent = 'Selected category by ChatGPT:';
+    responseElement.appendChild(selectedCategoryTitle);
+
+    const selectedCategoryName = document.createElement('p');
+	selectedCategoryName.className = 'category-content chatgpt-response';
+    selectedCategoryName.textContent = category;
+    responseElement.appendChild(selectedCategoryName);
+}
+
+
+
+// ==============================================================================
+// SUBCATEGORÍAS
+// ==============================================================================
+
+// Inicia el proceso de subcategorías
+function initiateSubcategoryProcess(category) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const subcategories = data.Categories[category];
+    if (subcategories) {
+        const subcategoryList = Object.keys(subcategories);
+        const description = sessionStorage.getItem('currentDescription');		
+        const subcategoryMessage = createSubcategoryPrompt(category, subcategoryList, description);
+        sendSubcategoryMessageToServer(subcategoryMessage, category);
+    } else {
+        console.error('No se encontraron subcategorías para la categoría seleccionada.');
+    }
+}
+
+// Función para crear el mensaje del primer prompt para subcategorías
+function createSubcategoryPrompt(selectedCategory, subcategories, description) {
+    let firstSubcategory = subcategories[0]; // Asumiendo que siempre habrá al menos una subcategoría
+    let promptMessage = `You are assisting in navigating a web application that categorizes items. Based on the selected category "${selectedCategory}" and the initial description provided ("${description}"), please choose the most appropriate subcategory from the list below. If the description applies equally across multiple subcategories or if there is insufficient context to distinguish them, default to selecting '${firstSubcategory}'.\n`;
+    promptMessage += `Subcategories: ${subcategories.join(', ')}.\n`;
+    promptMessage += `Respond only with the subcategory name.\n`;
+
+    return promptMessage;
+}
+
+// Envía el mensaje de subcategoría al servidor y maneja la respuesta
+function sendSubcategoryMessageToServer(message, category) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const subcategory = getSelectedCategory(data);
+        if (subcategory) {
+            processSubcategory(category, subcategory, message);
+        } else {
+            displayError('Subcategoría válida no encontrada.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+// Procesa la subcategoría seleccionada
+function processSubcategory(category, subcategory, originalMessage) {
+    displayChatGPTResponseSubcategory(subcategory, originalMessage);
+	initiateItemDescriptionProcess(category, subcategory);
+}
+
+
+
+// Visualiza la respuesta de ChatGPT para subcategorías
+function displayChatGPTResponseSubcategory(subcategory, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las subcategorías enviadas y la subcategoría seleccionada
+    const originalSubcategories = originalMessage.split('\n')[1].replace('Subcategories: ', '');
+
+    const subcategoriesSent = document.createElement('p');
+    subcategoriesSent.className = 'category-title';
+    subcategoriesSent.textContent = 'Subcategories sent to ChatGPT:';
+    responseElement.appendChild(subcategoriesSent);
+
+    const subcategoriesList = document.createElement('p');
+    subcategoriesList.textContent = originalSubcategories;
+    responseElement.appendChild(subcategoriesList);
+
+    const selectedSubcategoryPrompt = document.createElement('p');
+    selectedSubcategoryPrompt.className = 'category-title chatgpt-response';
+    selectedSubcategoryPrompt.textContent = 'Selected subcategory by ChatGPT:';
+    responseElement.appendChild(selectedSubcategoryPrompt);
+
+    const selectedSubcategoryName = document.createElement('p');
+	selectedSubcategoryName.className = 'category-content chatgpt-response';
+    selectedSubcategoryName.textContent = subcategory;
+    responseElement.appendChild(selectedSubcategoryName);
+}
+
+
+
+/// ==============================================================================
+// DESCRIPCIONES DE ÍTEMS
+// ==============================================================================
+
+// Inicia el proceso de descripciones de ítems
+function initiateItemDescriptionProcess(category, subcategory) {
+    const jsonData = sessionStorage.getItem('categoryData');
+    if (!jsonData) {
+        console.error('Datos de categoría no encontrados.');
+        return;
+    }
+
+    const data = JSON.parse(jsonData);
+    const items = data.Categories[category]?.[subcategory]?.Items; // Asegúrate de usar el acceso seguro a propiedades
+
+    if (items) {
+        const descriptions = items.map(item => item.description); // Recolectar descripciones de cada ítem
+        console.log("Descripciones de ítems:", descriptions);
+		const userDescription = sessionStorage.getItem('currentDescription');	
+        const itemDescriptionMessage = createItemDescriptionPrompt(subcategory, descriptions, userDescription);
+        sendItemDescriptionMessageToServer(itemDescriptionMessage, subcategory);
+    } else {
+        console.error('No se encontraron ítems para la subcategoría seleccionada:', subcategory);
+    }
+}
+
+// Función para crear el mensaje del primer prompt para descripciones de ítems
+function createItemDescriptionPrompt(subcategory, itemDescriptions, userDescription) {
+    let promptMessage = `Based on the selected subcategory "${subcategory}" and user's description "${userDescription}", please choose the most relevant item from the descriptions below.\n`;
+    promptMessage += `Item Descriptions: ${itemDescriptions.join(', ')}.\n`;
+    promptMessage += `Respond only with the description or a brief identifier.\n`;
+    return promptMessage;
+}
+
+// Envía el mensaje de descripción de ítems al servidor y maneja la respuesta
+function sendItemDescriptionMessageToServer(message, subcategory) {
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: message
+    })
+    .then(response => response.json())
+    .then(data => {
+        const selectedItemDescription = getSelectedItemDescription(data);
+        if (selectedItemDescription) {
+            displayItemDescriptionResponse(selectedItemDescription, message);
+			displayClassificationResults(selectedItemDescription);			
+        } else {
+            displayError('Descripción de ítem válida no encontrada.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar tu solicitud: ' + error);
+    });
+}
+
+
+// Extrae la descripción del ítem seleccionada de la respuesta del servidor
+function getSelectedItemDescription(data) {
+    if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+        const responseContent = data.choices[0].message.content;
+        if (responseContent.startsWith("ERROR:")) {
+            displayError(responseContent);
+            return null;
+        } else {
+            return responseContent;
+        }
+    }
+    return null;
+}
+
+
+// Muestra la descripción de ítem seleccionada
+function displayItemDescriptionResponse(selectedItemDescription, originalMessage) {
+    const responseElement = document.getElementById('categoryList');
+    if (!responseElement) {
+        console.error('Elemento con ID "categoryList" no encontrado.');
+        return;
+    }
+
+    // Mostrar las descripciones de ítems enviadas
+    const originalItemDescriptions = originalMessage.split('\n')[1].replace('Item Descriptions: ', '').split(".,");
+    const itemDescriptionsSent = document.createElement('p');
+    itemDescriptionsSent.className = 'category-title';
+    itemDescriptionsSent.textContent = 'Item descriptions sent to ChatGPT:';
+    responseElement.appendChild(itemDescriptionsSent);
+
+    const itemDescriptionsContainer = document.createElement('div');
+    itemDescriptionsContainer.className = 'item-descriptions-container';
+
+    originalItemDescriptions.forEach(description => {
+        if (description.trim() !== "") {
+            const itemDescription = document.createElement('p');
+            itemDescription.className = 'item-description';
+            itemDescription.textContent = `"${description.trim()}."`;
+            itemDescriptionsContainer.appendChild(itemDescription);
+        }
+    });
+    responseElement.appendChild(itemDescriptionsContainer);
+
+    // Mostrar la descripción de ítem seleccionada
+    const selectedItemDescriptionPrompt = document.createElement('p');
+    selectedItemDescriptionPrompt.className = 'category-title chatgpt-response';
+    selectedItemDescriptionPrompt.textContent = 'Selected item description by ChatGPT:';
+    responseElement.appendChild(selectedItemDescriptionPrompt);
+
+    const selectedItemDescriptionText = document.createElement('p');
+    selectedItemDescriptionText.className = 'category-content chatgpt-response';
+    selectedItemDescriptionText.textContent = `"${selectedItemDescription}"`;
+    responseElement.appendChild(selectedItemDescriptionText);
+}
+
+
+function displayClassificationResults(selectedItemDescription) {
+    const jsonData = JSON.parse(sessionStorage.getItem('categoryData'));
+    let selectedItemDetails = null;
+
+    // Buscar en todas las categorías y subcategorías hasta encontrar el ítem
+    for (let category in jsonData.Categories) {
+        for (let subcategory in jsonData.Categories[category]) {
+            const items = jsonData.Categories[category][subcategory].Items;
+            selectedItemDetails = items.find(item => item.description === selectedItemDescription);
+            if (selectedItemDetails) break;
+        }
+        if (selectedItemDetails) break;
+    }
+
+    if (!selectedItemDetails) {
+        console.error('Ítem no encontrado.');
+        return;
+    }
+
+    const resultText = document.getElementById('resultText');
+    if (!resultText) {
+        console.error('Elemento con ID "resultText" no encontrado.');
+        return;
+    }
+
+    // Limpia el contenido anterior
+    resultText.innerHTML = '';
+    
+    // Add the introductory phrase
+    const introParagraph = document.createElement('p');
+    introParagraph.textContent = 'Based on your initial description of the new item, ChatGPT has identified the most similar item in your uploaded collection:';
+    introParagraph.style.fontSize = '16px'; // Aumenta el tamaño del texto
+    introParagraph.style.fontWeight = 'bold'; // Hace el texto más grueso
+    resultText.appendChild(introParagraph);
+    
+    // Construir y mostrar los detalles del ítem seleccionado usando un nuevo elemento div
+    const detailsDiv = document.createElement('div');
+    detailsDiv.style.color = '#333'; // Cambia el color a un gris oscuro
+    detailsDiv.style.border = '1px solid #ccc'; // Añade un borde gris claro
+    detailsDiv.style.padding = '10px'; // Añade padding para separar el texto del borde
+    detailsDiv.style.marginTop = '10px'; // Añade un margen superior para separarlo del párrafo
+    detailsDiv.style.borderRadius = '5px'; // Bordes redondeados
+    detailsDiv.style.backgroundColor = '#f9f9f9'; // Fondo ligeramente gris para destacar como ficha
+    detailsDiv.innerHTML = `
+        <strong>ID:</strong> ${selectedItemDetails.id}<br>
+        <strong>Name:</strong> ${selectedItemDetails.name}<br>
+        <strong>Description:</strong> ${selectedItemDetails.description}<br>
+        <strong>Additional Info:</strong> ${selectedItemDetails.additional_info}<br>
+        <strong>Tags:</strong> ${selectedItemDetails.tags.join(', ')}
+    `;
+    resultText.appendChild(detailsDiv);
+}
+
+
