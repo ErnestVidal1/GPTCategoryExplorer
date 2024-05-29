@@ -143,7 +143,6 @@ function initiateCategoryProcess() {
     if (data && data.Categories) {
         const categories = Object.keys(data.Categories);
         const promptMessage = createCategoryPrompt(description, categories);
-		alert(promptMessage);
         sendCategoryMessageToServer(promptMessage);
     } else {
         console.log('No se encontraron categorías en el JSON subido.');
@@ -162,24 +161,29 @@ function createCategoryPrompt(description, categories) {
 
 // Envía el mensaje de categoría al servidor y maneja la respuesta
 function sendCategoryMessageToServer(message) {
-    fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: message
-    })
-    .then(response => response.json())
-    .then(data => {
-        const category = getSelectedCategory(data);
-        if (category) {
-            processCategory(category, message);
-        } else {
-            displayError('No valid category found.');
-        }
-    })
-    .catch(error => {
-        console.error('Error al procesar tu solicitud: ' + error);
-    });
-}
+	fetch('/api/chat', {
+		method: 'POST',
+		headers: {'Content-Type': 'text/plain'},
+		body: message
+	})
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		return response.json();
+	})
+	.then(data => {
+		const category = getSelectedCategory(data);
+		if (category) {
+			processCategory(category, message);
+		} else {
+			displayError('No valid category found.');
+		}
+	})
+	.catch(error => {
+		console.error('Error al procesar tu solicitud: ' + error);
+	});
+
 
 // Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {
