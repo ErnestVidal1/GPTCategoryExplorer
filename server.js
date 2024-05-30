@@ -8,8 +8,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// borrar esta llamada cuando termine el test, ya esta en chat.js
 const axios = require('axios');
+
 // Aquí añades el endpoint
 app.get('/test-openai', async (req, res) => {
     try {
@@ -28,8 +28,6 @@ app.get('/test-openai', async (req, res) => {
         res.status(500).json({ success: false, error: error.toString() });
     }
 });
-
-
 
 // Middleware para parsear JSON, manejar la subida de archivos y sesiones
 app.use(express.json());
@@ -98,7 +96,6 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-
 app.get('/check-file-uploaded', (req, res) => {
     if (req.session.categoryData) {
         res.json({ uploaded: true });
@@ -107,10 +104,10 @@ app.get('/check-file-uploaded', (req, res) => {
     }
 });
 
+// Agregar un manejador para la raíz
 app.get('/', (req, res) => {
-    res.send('Bienvenido al servidor');
+    res.sendFile(__dirname + '/public/index.html');
 });
-
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
