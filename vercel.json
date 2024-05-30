@@ -4,10 +4,6 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -16,8 +12,20 @@
       "dest": "server.js"
     },
     {
+      "src": "/upload-json",
+      "dest": "server.js"
+    },
+    {
+      "src": "/api/chat",
+      "dest": "server.js"
+    },
+    {
+      "src": "/check-file-uploaded",
+      "dest": "server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "server.js"
     }
   ]
 }
