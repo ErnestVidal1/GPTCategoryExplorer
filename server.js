@@ -1,16 +1,27 @@
 const express = require('express');
 const session = require('express-session');
-const handleChatRequest = require('./api/chat');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
+const axios = require('axios');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const axios = require('axios');
+app.use(express.json());
+app.use(express.static('public'));
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
+}));
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your_secret_key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production' }
+}));
 
-// Aquí añades el endpoint
+// Endpoint para test de OpenAI
 app.get('/test-openai', async (req, res) => {
     try {
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
@@ -29,24 +40,7 @@ app.get('/test-openai', async (req, res) => {
     }
 });
 
-// Middleware para parsear JSON, manejar la subida de archivos y sesiones
-app.use(express.json());
-app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: '/tmp/'
-}));
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' } // Secure true en producción
-}));
-
-// Middleware para parsear texto plano
-app.use(express.text());
-
-// Endpoint para obtener el estado del botón
+// Rutas de API
 app.get('/api/button-status', (req, res) => {
     const isButtonEnabled = process.env.IS_BUTTON_ENABLED === 'true';
     res.json({ isEnabled: isButtonEnabled });
@@ -66,8 +60,8 @@ app.post('/upload-json', (req, res) => {
 
         try {
             const data = fs.readFileSync(`/tmp/${jsonFile.name}`, 'utf8');
-            req.session.categoryData = JSON.parse(data);  // Store the JSON data in session
-            console.log('Category data stored in session:', req.session.categoryData); // Añadir registro para depurar
+            req.session.categoryData = JSON.parse(data);
+            console.log('Category data stored in session:', req.session.categoryData);
             res.send({ message: 'File uploaded and processed successfully.' });
         } catch (error) {
             console.error('Error reading or parsing the file:', error);
@@ -76,7 +70,6 @@ app.post('/upload-json', (req, res) => {
     });
 });
 
-// Ruta para manejar las solicitudes de ChatGPT solo con el mensaje
 app.post('/api/chat', async (req, res) => {
     const message = req.body;
 
@@ -87,7 +80,6 @@ app.post('/api/chat', async (req, res) => {
 
     try {
         const chatResponse = await handleChatRequest(message);
-        // Log aquí solo si la respuesta es exitosa y está completamente procesada.
         console.log("ChatGPT response:", chatResponse);
         res.json(chatResponse);
     } catch (error) {
@@ -104,8 +96,8 @@ app.get('/check-file-uploaded', (req, res) => {
     }
 });
 
-// Agregar un manejador para la raíz
-app.get('/', (req, res) => {
+// Manejar rutas no definidas para servir la aplicación
+app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
