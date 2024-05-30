@@ -1,22 +1,11 @@
 const express = require('express');
-const path = require('path');
-const cors = require('cors');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Configuración de CORS para permitir todas las solicitudes
-app.use(cors());
-
-// Servir archivos estáticos manualmente
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'), {
-    headers: {
-      'Content-Type': 'text/html'
-    }
-  });
+app.get('/api/hello', (req, res) => {
+  res.send('Hello, World!');
 });
 
-
-
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
