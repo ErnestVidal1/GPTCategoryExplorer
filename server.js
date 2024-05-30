@@ -60,6 +60,7 @@ app.post('/api/chat', async (req, res) => {
 
     try {
         const chatResponse = await handleChatRequest(message);
+        // Log aquí solo si la respuesta es exitosa y está completamente procesada.
         console.log("ChatGPT response:", chatResponse);
         res.json(chatResponse);
     } catch (error) {
