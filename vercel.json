@@ -8,32 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/test-openai",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/upload-json",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/api/chat",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/check-file-uploaded",
-      "dest": "/server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/public/index.html"
+      "dest": "/server.js"
     }
   ]
 }
