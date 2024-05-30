@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const axios = require('axios');
 const fileUpload = require('express-fileupload');
+const fs = require('fs');
 require('dotenv').config();
 const handleChatRequest = require('./api/chat');
 
@@ -24,16 +25,12 @@ app.use(fileUpload({
     tempFileDir: '/tmp/'
 }));
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' } // Secure true en producción
-}));
+// Ruta para servir el archivo HTML principal
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
-app.use(express.json()); // Middleware para parsear JSON
-
-
+// Ruta para probar OpenAI
 app.get('/test-openai', async (req, res) => {
     try {
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
@@ -52,7 +49,6 @@ app.get('/test-openai', async (req, res) => {
     }
 });
 
-
 // Ruta para manejar las solicitudes de ChatGPT solo con el mensaje
 app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
@@ -64,7 +60,7 @@ app.post('/api/chat', async (req, res) => {
 
     try {
         const chatResponse = await handleChatRequest(message);
-        console.log("ChatGPT response:", chatResponse); // Log aquí solo si la respuesta es exitosa y está completamente procesada.
+        console.log("ChatGPT response:", chatResponse);
         res.json(chatResponse);
     } catch (error) {
         console.error('Error processing the ChatGPT request:', error);
@@ -72,19 +68,40 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-async function testChatApi() {
-    try {
-        const response = await axios.post('http://localhost:3000/api/chat', {
-            message: "Hello, world!"
-        });
-        console.log('Response from /api/chat:', response.data);
-    } catch (error) {
-        console.error('Error testing /api/chat:', error);
+// Ruta para subir archivos JSON
+app.post('/upload-json', (req, res) => {
+    if (!req.files || !req.files.file) {
+        return res.status(400).send('No file was uploaded.');
     }
-}
 
-testChatApi();
+    const jsonFile = req.files.file;
+    jsonFile.mv(`/tmp/${jsonFile.name}`, async (err) => {
+        if (err) {
+            console.error('Error moving the file:', err);
+            return res.status(500).send('Error processing file.');
+        }
+
+        try {
+            const data = fs.readFileSync(`/tmp/${jsonFile.name}`, 'utf8');
+            req.session.categoryData = JSON.parse(data);  // Store the JSON data in session
+            console.log('Category data stored in session:', req.session.categoryData);
+            res.send({ message: 'File uploaded and processed successfully.' });
+        } catch (error) {
+            console.error('Error reading or parsing the file:', error);
+            res.status(500).send('Error parsing the JSON file.');
+        }
+    });
+});
+
+// Ruta para verificar si el archivo ha sido subido
+app.get('/check-file-uploaded', (req, res) => {
+    if (req.session.categoryData) {
+        res.json({ uploaded: true });
+    } else {
+        res.json({ uploaded: false });
+    }
+});
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
