@@ -15,21 +15,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/style.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'style.css'), {
-    headers: {
-      'Content-Type': 'text/css'
-    }
-  });
-});
-
-app.get('/script.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'script.js'), {
-    headers: {
-      'Content-Type': 'application/javascript'
-    }
-  });
-});
 
 
 
