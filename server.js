@@ -55,6 +55,19 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
+async function testChatApi() {
+    try {
+        const response = await axios.post('http://localhost:3000/api/chat', {
+            message: "Hello, world!"
+        });
+        console.log('Response from /api/chat:', response.data);
+    } catch (error) {
+        console.error('Error testing /api/chat:', error);
+    }
+}
+
+testChatApi();
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
