@@ -1,21 +1,28 @@
 const express = require('express');
 const session = require('express-session');
-const axios = require('axios');  // Asegúrate de importar axios
-require('dotenv').config();  // Esto asegurará que puedas usar las variables de entorno
-const handleChatRequest = require('./api/chat'); // Importar handleChatRequest
+const axios = require('axios');
+const fileUpload = require('express-fileupload');
+require('dotenv').config();
+const handleChatRequest = require('./api/chat');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware para parsear JSON, manejar la subida de archivos y sesiones
+// Middleware para manejar sesiones
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your_secret_key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production' }
+}));
+
+// Middleware para parsear JSON, manejar la subida de archivos y servir archivos estáticos
 app.use(express.json());
-app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
+app.use(express.static('public'));
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: '/tmp/'
 }));
-
-
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
