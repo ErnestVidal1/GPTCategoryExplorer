@@ -5,6 +5,10 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+// Middleware para servir archivos estáticos
+app.use(express.static('public'));
+
 // Endpoint para probar la comunicación con OpenAI
 app.get('/test-openai', async (req, res) => {
     try {
@@ -23,6 +27,7 @@ app.get('/test-openai', async (req, res) => {
         res.status(500).json({ success: false, error: error.toString() });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
