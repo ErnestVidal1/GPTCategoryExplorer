@@ -16,10 +16,6 @@
       "dest": "server.js"
     },
     {
-      "src": "/test-openai",
-      "dest": "server.js"
-    },
-    {
       "src": "/(.*)",
       "dest": "/$1"
     }

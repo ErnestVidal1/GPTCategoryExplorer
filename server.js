@@ -1,12 +1,16 @@
 const express = require('express');
+const session = require('express-session');
 const axios = require('axios');  // Asegúrate de importar axios
 require('dotenv').config();  // Esto asegurará que puedas usar las variables de entorno
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/api/hello', (req, res) => {
-  res.send('Hello, World!');
-});
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production' } // Secure true en producción
+}));
 
 app.get('/test-openai', async (req, res) => {
     try {
