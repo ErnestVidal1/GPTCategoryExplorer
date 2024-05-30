@@ -19,16 +19,11 @@ app.use(session({
 
 // Middleware para parsear JSON, manejar la subida de archivos y servir archivos estáticos
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: '/tmp/'
 }));
-
-// Ruta para servir el archivo HTML principal
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
 
 // Ruta para probar OpenAI
 app.get('/test-openai', async (req, res) => {

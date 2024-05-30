@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "/**",
+      "src": "public/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -20,8 +20,16 @@
       "dest": "server.js"
     },
     {
+      "src": "/upload-json",
+      "dest": "server.js"
+    },
+    {
+      "src": "/check-file-uploaded",
+      "dest": "server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/public/$1"
     }
   ]
 }

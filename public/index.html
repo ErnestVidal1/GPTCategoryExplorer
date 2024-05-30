@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bienvenido a GPT Category Explorer</title>
+</head>
+<body>
+	<h1>Bienvenido a GPT Category Explorer</h1>
+	<p>Explora las categorías y capacidades de GPT con nuestra aplicación.</p>
+	<a href="/test-openai">Probar OpenAI</a>
+	<h2>Probar Chat API</h2>
+	<form id="chatForm">
+		<label for="message">Mensaje:</label>
+		<input type="text" id="message" name="message" required>
+		<button type="submit">Enviar</button>
+	</form>
+	<pre id="response"></pre>
+	<script>
+		document.getElementById('chatForm').addEventListener('submit', async (event) => {
+			event.preventDefault();
+			const message = document.getElementById('message').value;
+			const responseElement = document.getElementById('response');
+			try {
+				const response = await fetch('/api/chat', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ message })
+				});
+				const data = await response.json();
+				responseElement.textContent = JSON.stringify(data, null, 2);
+			} catch (error) {
+				responseElement.textContent = 'Error: ' + error.toString();
+			}
+		});
+	</script>
+</body>
+</html>
