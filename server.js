@@ -2,6 +2,8 @@ const express = require('express');
 const session = require('express-session');
 const axios = require('axios');  // Asegúrate de importar axios
 require('dotenv').config();  // Esto asegurará que puedas usar las variables de entorno
+const handleChatRequest = require('./api/chat'); // Importar handleChatRequest
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -11,6 +13,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: process.env.NODE_ENV === 'production' } // Secure true en producción
 }));
+
+app.use(express.json()); // Middleware para parsear JSON
+
 
 app.get('/test-openai', async (req, res) => {
     try {
@@ -27,6 +32,26 @@ app.get('/test-openai', async (req, res) => {
     } catch (error) {
         console.error("Failed to reach OpenAI:", error);
         res.status(500).json({ success: false, error: error.toString() });
+    }
+});
+
+
+// Ruta para manejar las solicitudes de ChatGPT solo con el mensaje
+app.post('/api/chat', async (req, res) => {
+    const { message } = req.body;
+
+    if (!message || typeof message !== 'string' || message.trim() === '') {
+        console.log("Error: El mensaje está vacío.");
+        return res.status(400).json({ error: 'El mensaje no puede estar vacío.' });
+    }
+
+    try {
+        const chatResponse = await handleChatRequest(message);
+        console.log("ChatGPT response:", chatResponse); // Log aquí solo si la respuesta es exitosa y está completamente procesada.
+        res.json(chatResponse);
+    } catch (error) {
+        console.error('Error processing the ChatGPT request:', error);
+        res.status(500).send('Error processing the ChatGPT request.');
     }
 });
 
