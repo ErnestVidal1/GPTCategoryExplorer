@@ -1,28 +1,37 @@
 const express = require('express');
-const axios = require('axios');
-require('dotenv').config();
-
+const path = require('path');
+const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3000;
 
-app.get('/test-openai', async (req, res) => {
-    try {
-        const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-            model: "gpt-4",
-            messages: [{ role: "user", content: "Hello, world!" }]
-        }, {
-            headers: {
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-                'Content-Type': 'application/json',
-            }
-        });
-        res.json({ success: true, response: response.data });
-    } catch (error) {
-        console.error("Failed to reach OpenAI:", error);
-        res.status(500).json({ success: false, error: error.toString() });
+// Configuración de CORS para permitir todas las solicitudes
+app.use(cors());
+
+// Servir archivos estáticos manualmente
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'), {
+    headers: {
+      'Content-Type': 'text/html'
     }
+  });
 });
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+app.get('/style.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'style.css'), {
+    headers: {
+      'Content-Type': 'text/css'
+    }
+  });
 });
+
+app.get('/script.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'script.js'), {
+    headers: {
+      'Content-Type': 'application/javascript'
+    }
+  });
+});
+
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
