@@ -8,11 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/test-openai",
       "dest": "/server.js"
     },
     {
-      "src": "/test-openai",
+      "src": "/api/(.*)",
       "dest": "/server.js"
     },
     {
@@ -29,8 +29,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1",
-      "continue": true
+      "dest": "/public/$1"
     },
     {
       "src": "/",
