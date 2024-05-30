@@ -7,6 +7,17 @@ const handleChatRequest = require('./api/chat'); // Importar handleChatRequest
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware para parsear JSON, manejar la subida de archivos y sesiones
+app.use(express.json());
+app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
+}));
+
+// Middleware para parsear texto plano
+app.use(express.text());
+
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
     resave: false,
