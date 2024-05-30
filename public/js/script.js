@@ -8,7 +8,6 @@ function initialize() {
     console.log("Initialization complete.");
 }
 
-
 function setupFileUploadListener() {
     const uploadInput = document.getElementById('file-upload');
     uploadInput.accept = ".json";  // Asegurarse de que solo se aceptan archivos JSON
@@ -40,8 +39,6 @@ function setupFileUploadListener() {
         }
     };
 }
-
-
 
 function uploadTemplateCategories(event) {
     event.preventDefault();
@@ -77,9 +74,6 @@ function uploadTemplateCategories(event) {
     uploadInput.click();
 }
 
-
-
-
 function displayError(errorMessage) {
     const responseElement = document.getElementById('categoryList');
 
@@ -89,8 +83,6 @@ function displayError(errorMessage) {
     responseElement.appendChild(li);
 }
 
-
-// Configura los oyentes de eventos para los botones
 function setupButtonListeners() {
     const startButton = document.getElementById('startExploration');
     if (startButton) {
@@ -115,14 +107,10 @@ function clearCategories() {
     }
 }
 
-
-
 // ==============================================================================
 // CATEGORÍAS
 // ==============================================================================
 
-
-// Inicia el proceso de categorías
 function initiateCategoryProcess() {
     const description = document.getElementById('userNeeds').value.trim();
     sessionStorage.setItem('currentDescription', description); // Guardar en sessionStorage
@@ -130,7 +118,7 @@ function initiateCategoryProcess() {
         console.log("Por favor, describe tu artículo.");
         return;
     }
-	
+
     const jsonData = sessionStorage.getItem('categoryData');
     if (!jsonData) {
         console.log('No se encontraron datos de categorías. Por favor, sube un archivo JSON primero.');
@@ -147,7 +135,6 @@ function initiateCategoryProcess() {
     }
 }
 
-// Función para crear el mensaje del primer prompt para categorías
 function createCategoryPrompt(description, categories) {
     let promptMessage = `Based on the description provided, please choose the most appropriate category from the list below. Respond with only the name of the selected category exactly as it appears, even if it contains typos or errors. If the description matches multiple categories equally, choose the one that best represents the primary context of the description. If no category is appropriate, begin your response with "ERROR:" followed by your reason.\n`;
     promptMessage += `Description: "${description}".\n`;
@@ -157,7 +144,6 @@ function createCategoryPrompt(description, categories) {
     return promptMessage;
 }
 
-// Envía el mensaje de categoría al servidor y maneja la respuesta
 function sendCategoryMessageToServer(message) {
     fetch('/api/chat', {
         method: 'POST',
@@ -178,7 +164,6 @@ function sendCategoryMessageToServer(message) {
     });
 }
 
-// Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {
     if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
         const responseContent = data.choices[0].message.content;
@@ -192,7 +177,6 @@ function getSelectedCategory(data) {
     return null;
 }
 
-// Procesa la categoría seleccionada, obteniendo subcategorías si están disponibles
 function processCategory(category, originalMessage) {
     const jsonData = sessionStorage.getItem('categoryData');
     if (!jsonData) {
@@ -204,13 +188,12 @@ function processCategory(category, originalMessage) {
     const subcategories = data.Categories[category];
     if (subcategories) {
         displayChatGPTResponseCategory(category, originalMessage);
-		initiateSubcategoryProcess(category);
+        initiateSubcategoryProcess(category);
     } else {
         displayError('No se encontraron subcategorías para la categoría seleccionada.');
     }
 }
 
-// Visualiza la respuesta de ChatGPT para categorías
 function displayChatGPTResponseCategory(category, originalMessage) {
     const responseElement = document.getElementById('categoryList');
     if (!responseElement) {
@@ -218,7 +201,6 @@ function displayChatGPTResponseCategory(category, originalMessage) {
         return;
     }
 
-    // Mostrar las categorías enviadas y la categoría seleccionada
     const originalCategories = originalMessage.split('\n')[2].replace('Categories: ', '');
 
     const categoriesSent = document.createElement('p');
@@ -236,18 +218,15 @@ function displayChatGPTResponseCategory(category, originalMessage) {
     responseElement.appendChild(selectedCategoryTitle);
 
     const selectedCategoryName = document.createElement('p');
-	selectedCategoryName.className = 'category-content chatgpt-response';
+    selectedCategoryName.className = 'category-content chatgpt-response';
     selectedCategoryName.textContent = category;
     responseElement.appendChild(selectedCategoryName);
 }
-
-
 
 // ==============================================================================
 // SUBCATEGORÍAS
 // ==============================================================================
 
-// Inicia el proceso de subcategorías
 function initiateSubcategoryProcess(category) {
     const jsonData = sessionStorage.getItem('categoryData');
     if (!jsonData) {
@@ -259,7 +238,7 @@ function initiateSubcategoryProcess(category) {
     const subcategories = data.Categories[category];
     if (subcategories) {
         const subcategoryList = Object.keys(subcategories);
-        const description = sessionStorage.getItem('currentDescription');		
+        const description = sessionStorage.getItem('currentDescription');
         const subcategoryMessage = createSubcategoryPrompt(category, subcategoryList, description);
         sendSubcategoryMessageToServer(subcategoryMessage, category);
     } else {
@@ -267,9 +246,8 @@ function initiateSubcategoryProcess(category) {
     }
 }
 
-// Función para crear el mensaje del primer prompt para subcategorías
 function createSubcategoryPrompt(selectedCategory, subcategories, description) {
-    let firstSubcategory = subcategories[0]; // Asumiendo que siempre habrá al menos una subcategoría
+    let firstSubcategory = subcategories[0];
     let promptMessage = `You are assisting in navigating a web application that categorizes items. Based on the selected category "${selectedCategory}" and the initial description provided ("${description}"), please choose the most appropriate subcategory from the list below. If the description applies equally across multiple subcategories or if there is insufficient context to distinguish them, default to selecting '${firstSubcategory}'.\n`;
     promptMessage += `Subcategories: ${subcategories.join(', ')}.\n`;
     promptMessage += `Respond only with the subcategory name.\n`;
@@ -277,7 +255,6 @@ function createSubcategoryPrompt(selectedCategory, subcategories, description) {
     return promptMessage;
 }
 
-// Envía el mensaje de subcategoría al servidor y maneja la respuesta
 function sendSubcategoryMessageToServer(message, category) {
     fetch('/api/chat', {
         method: 'POST',
@@ -298,15 +275,11 @@ function sendSubcategoryMessageToServer(message, category) {
     });
 }
 
-// Procesa la subcategoría seleccionada
 function processSubcategory(category, subcategory, originalMessage) {
     displayChatGPTResponseSubcategory(subcategory, originalMessage);
-	initiateItemDescriptionProcess(category, subcategory);
+    initiateItemDescriptionProcess(category, subcategory);
 }
 
-
-
-// Visualiza la respuesta de ChatGPT para subcategorías
 function displayChatGPTResponseSubcategory(subcategory, originalMessage) {
     const responseElement = document.getElementById('categoryList');
     if (!responseElement) {
@@ -314,7 +287,6 @@ function displayChatGPTResponseSubcategory(subcategory, originalMessage) {
         return;
     }
 
-    // Mostrar las subcategorías enviadas y la subcategoría seleccionada
     const originalSubcategories = originalMessage.split('\n')[1].replace('Subcategories: ', '');
 
     const subcategoriesSent = document.createElement('p');
@@ -332,18 +304,15 @@ function displayChatGPTResponseSubcategory(subcategory, originalMessage) {
     responseElement.appendChild(selectedSubcategoryPrompt);
 
     const selectedSubcategoryName = document.createElement('p');
-	selectedSubcategoryName.className = 'category-content chatgpt-response';
+    selectedSubcategoryName.className = 'category-content chatgpt-response';
     selectedSubcategoryName.textContent = subcategory;
     responseElement.appendChild(selectedSubcategoryName);
 }
 
-
-
-/// ==============================================================================
+// ==============================================================================
 // DESCRIPCIONES DE ÍTEMS
 // ==============================================================================
 
-// Inicia el proceso de descripciones de ítems
 function initiateItemDescriptionProcess(category, subcategory) {
     const jsonData = sessionStorage.getItem('categoryData');
     if (!jsonData) {
@@ -352,12 +321,12 @@ function initiateItemDescriptionProcess(category, subcategory) {
     }
 
     const data = JSON.parse(jsonData);
-    const items = data.Categories[category]?.[subcategory]?.Items; // Asegúrate de usar el acceso seguro a propiedades
+    const items = data.Categories[category]?.[subcategory]?.Items;
 
     if (items) {
-        const descriptions = items.map(item => item.description); // Recolectar descripciones de cada ítem
+        const descriptions = items.map(item => item.description);
         console.log("Descripciones de ítems:", descriptions);
-		const userDescription = sessionStorage.getItem('currentDescription');	
+        const userDescription = sessionStorage.getItem('currentDescription');
         const itemDescriptionMessage = createItemDescriptionPrompt(subcategory, descriptions, userDescription);
         sendItemDescriptionMessageToServer(itemDescriptionMessage, subcategory);
     } else {
@@ -365,7 +334,6 @@ function initiateItemDescriptionProcess(category, subcategory) {
     }
 }
 
-// Función para crear el mensaje del primer prompt para descripciones de ítems
 function createItemDescriptionPrompt(subcategory, itemDescriptions, userDescription) {
     let promptMessage = `Based on the selected subcategory "${subcategory}" and user's description "${userDescription}", please choose the most relevant item from the descriptions below.\n`;
     promptMessage += `Item Descriptions: ${itemDescriptions.join(', ')}.\n`;
@@ -373,7 +341,6 @@ function createItemDescriptionPrompt(subcategory, itemDescriptions, userDescript
     return promptMessage;
 }
 
-// Envía el mensaje de descripción de ítems al servidor y maneja la respuesta
 function sendItemDescriptionMessageToServer(message, subcategory) {
     fetch('/api/chat', {
         method: 'POST',
@@ -385,7 +352,7 @@ function sendItemDescriptionMessageToServer(message, subcategory) {
         const selectedItemDescription = getSelectedItemDescription(data);
         if (selectedItemDescription) {
             displayItemDescriptionResponse(selectedItemDescription, message);
-			displayClassificationResults(selectedItemDescription);			
+            displayClassificationResults(selectedItemDescription);
         } else {
             displayError('Descripción de ítem válida no encontrada.');
         }
@@ -395,8 +362,6 @@ function sendItemDescriptionMessageToServer(message, subcategory) {
     });
 }
 
-
-// Extrae la descripción del ítem seleccionada de la respuesta del servidor
 function getSelectedItemDescription(data) {
     if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
         const responseContent = data.choices[0].message.content;
@@ -410,8 +375,6 @@ function getSelectedItemDescription(data) {
     return null;
 }
 
-
-// Muestra la descripción de ítem seleccionada
 function displayItemDescriptionResponse(selectedItemDescription, originalMessage) {
     const responseElement = document.getElementById('categoryList');
     if (!responseElement) {
@@ -419,7 +382,6 @@ function displayItemDescriptionResponse(selectedItemDescription, originalMessage
         return;
     }
 
-    // Mostrar las descripciones de ítems enviadas
     const originalItemDescriptions = originalMessage.split('\n')[1].replace('Item Descriptions: ', '').split(".,");
     const itemDescriptionsSent = document.createElement('p');
     itemDescriptionsSent.className = 'category-title';
@@ -439,7 +401,6 @@ function displayItemDescriptionResponse(selectedItemDescription, originalMessage
     });
     responseElement.appendChild(itemDescriptionsContainer);
 
-    // Mostrar la descripción de ítem seleccionada
     const selectedItemDescriptionPrompt = document.createElement('p');
     selectedItemDescriptionPrompt.className = 'category-title chatgpt-response';
     selectedItemDescriptionPrompt.textContent = 'Selected item description by ChatGPT:';
@@ -451,12 +412,10 @@ function displayItemDescriptionResponse(selectedItemDescription, originalMessage
     responseElement.appendChild(selectedItemDescriptionText);
 }
 
-
 function displayClassificationResults(selectedItemDescription) {
     const jsonData = JSON.parse(sessionStorage.getItem('categoryData'));
     let selectedItemDetails = null;
 
-    // Buscar en todas las categorías y subcategorías hasta encontrar el ítem
     for (let category in jsonData.Categories) {
         for (let subcategory in jsonData.Categories[category]) {
             const items = jsonData.Categories[category][subcategory].Items;
@@ -477,24 +436,21 @@ function displayClassificationResults(selectedItemDescription) {
         return;
     }
 
-    // Limpia el contenido anterior
     resultText.innerHTML = '';
-    
-    // Add the introductory phrase
+
     const introParagraph = document.createElement('p');
     introParagraph.textContent = 'Based on your initial description of the new item, ChatGPT has identified the most similar item in your uploaded collection:';
-    introParagraph.style.fontSize = '16px'; // Aumenta el tamaño del texto
-    introParagraph.style.fontWeight = 'bold'; // Hace el texto más grueso
+    introParagraph.style.fontSize = '16px';
+    introParagraph.style.fontWeight = 'bold';
     resultText.appendChild(introParagraph);
-    
-    // Construir y mostrar los detalles del ítem seleccionado usando un nuevo elemento div
+
     const detailsDiv = document.createElement('div');
-    detailsDiv.style.color = '#333'; // Cambia el color a un gris oscuro
-    detailsDiv.style.border = '1px solid #ccc'; // Añade un borde gris claro
-    detailsDiv.style.padding = '10px'; // Añade padding para separar el texto del borde
-    detailsDiv.style.marginTop = '10px'; // Añade un margen superior para separarlo del párrafo
-    detailsDiv.style.borderRadius = '5px'; // Bordes redondeados
-    detailsDiv.style.backgroundColor = '#f9f9f9'; // Fondo ligeramente gris para destacar como ficha
+    detailsDiv.style.color = '#333';
+    detailsDiv.style.border = '1px solid #ccc';
+    detailsDiv.style.padding = '10px';
+    detailsDiv.style.marginTop = '10px';
+    detailsDiv.style.borderRadius = '5px';
+    detailsDiv.style.backgroundColor = '#f9f9f9';
     detailsDiv.innerHTML = `
         <strong>ID:</strong> ${selectedItemDetails.id}<br>
         <strong>Name:</strong> ${selectedItemDetails.name}<br>
@@ -504,5 +460,3 @@ function displayClassificationResults(selectedItemDescription) {
     `;
     resultText.appendChild(detailsDiv);
 }
-
-
