@@ -1,38 +1,129 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bienvenido a GPT Category Explorer</title>
+    <meta charset="UTF-8">
+    <title>GPTCategoryExplorer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-	<h1>Bienvenido a GPT Category Explorer</h1>
-	<p>Explora las categorías y capacidades de GPT con nuestra aplicación.</p>
-	<a href="/test-openai">Probar OpenAI</a>
-	<h2>Probar Chat API</h2>
-	<form id="chatForm">
-		<label for="message">Mensaje:</label>
-		<input type="text" id="message" name="message" required>
-		<button type="submit">Enviar</button>
-	</form>
-	<pre id="response"></pre>
-	<script>
-		document.getElementById('chatForm').addEventListener('submit', async (event) => {
-			event.preventDefault();
-			const message = document.getElementById('message').value;
-			const responseElement = document.getElementById('response');
-			try {
-				const response = await fetch('/api/chat', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ message })
-				});
-				const data = await response.json();
-				responseElement.textContent = JSON.stringify(data, null, 2);
-			} catch (error) {
-				responseElement.textContent = 'Error: ' + error.toString();
-			}
-		});
-	</script>
+    <header class="header">
+        <h1>Welcome to GPTCategoryExplorer</h1>
+        <p>Identify the most similar item in a large collection using ChatGPT.</p>
+    </header>
+
+    <main class="main-container">
+		<section class="introduction-section">
+			<h2>Introduction</h2>
+			<div class="box">
+				<p>GGPTCategoryExplorer is a tool designed to help you identify the item most similar or closest to the one described by the user in their prompt, especially in cases where the text or tokens exceed the limits of a single ChatGPT prompt.</p>
+				<a href="#" id="readMoreLink">Read more</a>
+				<div id="moreText" class="hidden">
+					<p>The tool allows ChatGPT to navigate through categories and subcategories, making its own choices between various paths and comparing results, and it can even backtrack if necessary. Ultimately, ChatGPT reads the descriptions of a smaller, more manageable subcollection of items, ensuring an efficient and structured exploration of large datasets, with ChatGPT piloting the entire process.</p>
+					<p>For example, in a scenario where you have a vast collection of macros categorized by ChatGPT for document automation, GGPTCategoryExplorer can swiftly identify the most relevant VBA Word macro for a new document layout demand. This allows you to use the macro directly or provide it to ChatGPT for quick adjustments, significantly reducing the errors, feedback needs, and iterations typically required when creating from scratch.</p>
+					<p>Additionally, it is also useful for e-commerce catalog management, large-scale data analysis, and content management, improving searchability and accessibility across multiple platforms.</p>
+				</div>
+			</div>
+		</section>
+								
+		<section class="input-section">
+			<h2>Upload Your Categories</h2>
+			<div class="box">
+				<div class="button-container">
+					<button onclick="location.href='data/empty_categorization_template.json'" download="empty_categorization_template.json">Download Empty Template</button>
+					<button onclick="location.href='data/sample_categorization_template.json'" download="sample_categorization_template.json">Download Example Template</button>
+				</div>
+				<p>Click on the button to view the template in your browser. To download the file, right-click on the button or the displayed file in your browser and choose "Save As..." from the context menu.</p>
+				<p>Fill in with your categories if you downloaded the empty template.</p>
+				<label for="file-upload" class="custom-file-upload">
+					<input id="file-upload" type="file"/>
+					Upload Filled Template
+				</label>
+			</div>
+		</section>
+
+<section class="description-section">
+    <h2>Describe Your New Item</h2>
+    <div class="box">
+        <textarea id="userNeeds" placeholder="Describe Your New Item... E.g., 'I need a VBA macro for Word that highlights author names in the bibliography before the year of publication', or 'I need an article about Ethereum smart contracts focusing on security practices and vulnerability assessments'." rows="4" style="width:100%;"></textarea>
+    </div>
+</section>
+
+
+        
+        <div class="button-container">
+            <div class="left-buttons">
+                <a id="enableLink" href="#" class="enable-link">Enable button</a>
+                <p id="enabledMessage" class="enabled-message" style="display: none;">You can use the tool freely for now. If the OpenAI API usage limit is exceeded, you will need to request access via email.</p>
+                <button id="startExploration" disabled>Start Exploration with ChatGPT</button>
+            </div>
+            <button id="clearCategories" class="right-button" style="white-space: nowrap;">Clear ChatGPT Navigation Path</button>
+        </div>
+
+        <section class="navigation-section">
+            <h2>ChatGPT Navigation Path</h2>
+            <div class="box code-output">
+                <ul id="categoryList"></ul>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2>Classification Results</h2>
+            <div class="box">
+                <p id="resultText"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        GPTCategoryExplorer © 2024
+    </footer>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const readMoreLink = document.getElementById('readMoreLink');
+            const moreText = document.getElementById('moreText');
+
+            readMoreLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                if (moreText.classList.contains('hidden')) {
+                    moreText.classList.remove('hidden');
+                    readMoreLink.textContent = 'Read less';
+                } else {
+                    moreText.classList.add('hidden');
+                    readMoreLink.textContent = 'Read more';
+                }
+            });
+
+            fetch('/api/button-status')
+                .then(response => response.json())
+                .then(data => {
+                    const startButton = document.getElementById('startExploration');
+                    const enableLink = document.getElementById('enableLink');
+                    const enabledMessage = document.getElementById('enabledMessage');
+
+                    if (data.isEnabled) {
+                        startButton.disabled = false;
+                        enableLink.style.display = 'none';
+                        enabledMessage.style.display = 'block';
+                    } else {
+                        startButton.disabled = true;
+                        enableLink.style.display = 'block';
+                        enabledMessage.style.display = 'none';
+                        enableLink.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('The button to start the ChatGPT consultation is disabled because the OpenAI API usage limit has been exceeded for this month. If you would like free access to test the tool, please send an email to the developer: ernestvida1@gmail.com');
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al verificar el estado del botón:', error);
+                });
+        });
+    </script>
 </body>
 </html>
