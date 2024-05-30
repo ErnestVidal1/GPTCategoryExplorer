@@ -3,17 +3,35 @@ const session = require('express-session');
 const handleChatRequest = require('./api/chat');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
-const CircularJSON = require('circular-json'); // Añadir la biblioteca circular-json
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Verificar si las variables de entorno se cargaron correctamente
-if (!process.env.OPENAI_API_KEY) {
-    console.error("Error: OPENAI_API_KEY no está definida en las variables de entorno.");
-}
+// borrar esta llamada cuando termine el test, ya esta en chat.js
+const axios = require('axios');
+// Aquí añades el endpoint
+app.get('/test-openai', async (req, res) => {
+    try {
+        const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+            model: "gpt-4",
+            messages: [{ role: "user", content: "Hello, world!" }]
+        }, {
+            headers: {
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+                'Content-Type': 'application/json',
+            }
+        });
+        res.json({ success: true, response: response.data });
+    } catch (error) {
+        console.error("Failed to reach OpenAI:", error);
+        res.status(500).json({ success: false, error: error.toString() });
+    }
+});
 
+
+
+// Middleware para parsear JSON, manejar la subida de archivos y sesiones
 app.use(express.json());
 app.use(express.static('public'));  // Servir archivos estáticos desde 'public'
 app.use(fileUpload({
@@ -21,43 +39,48 @@ app.use(fileUpload({
     tempFileDir: '/tmp/'
 }));
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_secret_key',
+    secret: process.env.SESSION_SECRET || 'your_secret_key', // Usa una clave secreta desde variables de entorno
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { secure: process.env.NODE_ENV === 'production' } // Secure true en producción
 }));
 
 // Middleware para parsear texto plano
 app.use(express.text());
 
+// Endpoint para obtener el estado del botón
+app.get('/api/button-status', (req, res) => {
+    const isButtonEnabled = process.env.IS_BUTTON_ENABLED === 'true';
+    res.json({ isEnabled: isButtonEnabled });
+});
+
 app.post('/upload-json', (req, res) => {
     if (!req.files || !req.files.file) {
-        return res.status(400).json({ error: 'No file was uploaded.' });  // Devolver JSON en caso de error
+        return res.status(400).send('No file was uploaded.');
     }
 
     const jsonFile = req.files.file;
-    const tempPath = `/tmp/${jsonFile.name}`;
-
-    jsonFile.mv(tempPath, async (err) => {
+    jsonFile.mv(`/tmp/${jsonFile.name}`, async (err) => {
         if (err) {
             console.error('Error moving the file:', err);
-            return res.status(500).json({ error: 'Error processing file.' });  // Devolver JSON en caso de error
+            return res.status(500).send('Error processing file.');
         }
 
         try {
-            const data = fs.readFileSync(tempPath, 'utf8');
-            req.session.categoryData = JSON.parse(data);
-            console.log('Category data stored in session:', req.session.categoryData);
-            res.json({ message: 'File uploaded and processed successfully.' });
+            const data = fs.readFileSync(`/tmp/${jsonFile.name}`, 'utf8');
+            req.session.categoryData = JSON.parse(data);  // Store the JSON data in session
+            console.log('Category data stored in session:', req.session.categoryData); // Añadir registro para depurar
+            res.send({ message: 'File uploaded and processed successfully.' });
         } catch (error) {
             console.error('Error reading or parsing the file:', error);
-            res.status(500).json({ error: 'Error parsing the JSON file.' });  // Devolver JSON en caso de error
+            res.status(500).send('Error parsing the JSON file.');
         }
     });
 });
 
+// Ruta para manejar las solicitudes de ChatGPT solo con el mensaje
 app.post('/api/chat', async (req, res) => {
-    const { message } = req.body;  // Extrae el mensaje del cuerpo de la solicitud
+    const message = req.body;
 
     if (!message || typeof message !== 'string' || message.trim() === '') {
         console.log("Error: El mensaje está vacío.");
@@ -65,24 +88,16 @@ app.post('/api/chat', async (req, res) => {
     }
 
     try {
-        console.log("Sending message to ChatGPT:", message);
         const chatResponse = await handleChatRequest(message);
+        // Log aquí solo si la respuesta es exitosa y está completamente procesada.
         console.log("ChatGPT response:", chatResponse);
         res.json(chatResponse);
     } catch (error) {
-        console.error('Error processing the ChatGPT request:', CircularJSON.stringify(error)); // Usar CircularJSON para evitar el error de estructura circular
-        if (error.response) {
-            console.error("Response data:", CircularJSON.stringify(error.response.data));
-            console.error("Status:", error.response.status);
-            console.error("Headers:", error.response.headers);
-        } else if (error.request) {
-            console.error("No response received from ChatGPT:", error.request);
-        } else {
-            console.error("Error setting up the request:", error.message);
-        }
-        res.status(500).json({ error: 'Error processing the ChatGPT request.' });  // Devolver JSON en caso de error
+        console.error('Error processing the ChatGPT request:', error);
+        res.status(500).send('Error processing the ChatGPT request.');
     }
 });
+
 
 app.get('/check-file-uploaded', (req, res) => {
     if (req.session.categoryData) {
