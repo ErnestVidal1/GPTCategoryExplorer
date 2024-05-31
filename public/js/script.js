@@ -160,11 +160,11 @@ function createCategoryPrompt(description, categories) {
 // Envía el mensaje de categoría al servidor y maneja la respuesta
 function sendCategoryMessageToServer(message) {
 	console.log("Enviando mensaje al servidor: ", message);
-    fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: message
-    })
+	fetch('/api/chat', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ message: message })
+	})
     .then(response => response.json())
     .then(data => {
 		    console.log("Respuesta del servidor: ", data);
