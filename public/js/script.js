@@ -165,6 +165,7 @@ function sendCategoryMessageToServer(message) {
         body: message
     })
     .then(response => response.json())
+	alert(response);
     .then(data => {
         const category = getSelectedCategory(data);
         if (category) {
