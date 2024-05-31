@@ -291,11 +291,11 @@ function createSubcategoryPrompt(selectedCategory, subcategories, description) {
 
 // Envía el mensaje de subcategoría al servidor y maneja la respuesta
 function sendSubcategoryMessageToServer(message, category) {
-    fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: message
-    })
+	fetch('/api/chat', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ message: message })
+	})
     .then(response => response.json())
     .then(data => {
         const subcategory = getSelectedCategory(data);
@@ -387,11 +387,11 @@ function createItemDescriptionPrompt(subcategory, itemDescriptions, userDescript
 
 // Envía el mensaje de descripción de ítems al servidor y maneja la respuesta
 function sendItemDescriptionMessageToServer(message, subcategory) {
-    fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: message
-    })
+	fetch('/api/chat', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({ message: message })
+	})
     .then(response => response.json())
     .then(data => {
         const selectedItemDescription = getSelectedItemDescription(data);
