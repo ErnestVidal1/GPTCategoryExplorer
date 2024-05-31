@@ -217,10 +217,8 @@ textarea::placeholder {
 }
 
 .video-container iframe {
-    border: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    aspect-ratio: 16 / 9; /* Mantiene la proporción de aspecto 16:9 */
 }
+
