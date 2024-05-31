@@ -223,3 +223,12 @@ textarea::placeholder {
     aspect-ratio: 16 / 9; /* Mantiene la proporción de aspecto 16:9 */
 }
 
+.callout {
+    background-color: #f9f9f9; /* Color de fondo suave */
+    border-left: 5px solid #0077cc; /* Borde izquierdo para destacar */
+    padding: 20px; /* Espacio interior para hacerlo más legible */
+    margin: 20px 0; /* Margen superior e inferior para distanciarlo de otros elementos */
+    font-weight: bold; /* Hacer el texto más pesado */
+    text-align: center; /* Centrar el texto */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para hacerlo 'levantar' del resto del contenido */
+}
