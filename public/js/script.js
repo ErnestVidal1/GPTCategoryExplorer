@@ -159,14 +159,15 @@ function createCategoryPrompt(description, categories) {
 
 // Envía el mensaje de categoría al servidor y maneja la respuesta
 function sendCategoryMessageToServer(message) {
+	console.log("Enviando mensaje al servidor: ", message);
     fetch('/api/chat', {
         method: 'POST',
         headers: {'Content-Type': 'text/plain'},
         body: message
     })
     .then(response => response.json())
-	alert(response);
     .then(data => {
+		    console.log("Respuesta del servidor: ", data);
         const category = getSelectedCategory(data);
         if (category) {
             processCategory(category, message);
@@ -181,14 +182,24 @@ function sendCategoryMessageToServer(message) {
 
 // Extrae la categoría seleccionada de la respuesta del servidor
 function getSelectedCategory(data) {
+    // Imprimir toda la data recibida del servidor para revisar su estructura.
+    console.log("Data recibida del servidor:", data);
+
+    // Verificar que la data contiene la estructura esperada.
     if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
         const responseContent = data.choices[0].message.content;
+        // Imprimir el contenido del mensaje recibido para verificar qué se está procesando.
+        console.log("Contenido del mensaje de la respuesta:", responseContent);
+
         if (responseContent.startsWith("ERROR:")) {
             displayError(responseContent);
             return null;
         } else {
             return responseContent;
         }
+    } else {
+        // Imprimir un mensaje de error si la estructura no es la esperada.
+        console.log("La estructura de la respuesta no contiene los campos esperados.");
     }
     return null;
 }
