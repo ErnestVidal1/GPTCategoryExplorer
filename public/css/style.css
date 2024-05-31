@@ -224,11 +224,18 @@ textarea::placeholder {
 }
 
 .callout {
-    background-color: #f9f9f9; /* Color de fondo suave */
-    border-left: 5px solid #0077cc; /* Borde izquierdo para destacar */
-    padding: 20px; /* Espacio interior para hacerlo más legible */
-    margin: 20px 0; /* Margen superior e inferior para distanciarlo de otros elementos */
-    font-weight: bold; /* Hacer el texto más pesado */
-    text-align: center; /* Centrar el texto */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para hacerlo 'levantar' del resto del contenido */
+    background-color: #f9f9f9; /* Color de fondo claro */
+    border-left: 5px solid #0077cc; /* Barra azul para destacar */
+    padding: 20px; /* Espacio interior */
+    margin: 20px 0; /* Margen arriba y abajo */
+    font-weight: bold; /* Negrita para hacerlo resaltar */
+    text-align: center; /* Alineación centrada */
+    font-size: 1.2em; /* Tamaño de fuente mayor */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra para efecto de elevación */
+    display: block; /* Usar block para permitir el margin automático */
+    width: 80%; /* Controlar el ancho */
+    max-width: 800px; /* Ancho máximo */
+    margin-left: auto; /* Margen automático izquierda */
+    margin-right: auto; /* Margen automático derecha */
 }
