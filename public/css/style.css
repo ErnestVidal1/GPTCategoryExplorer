@@ -17,15 +17,7 @@ header {
     width: 100%;
 }
 
-.header p {
-    font-size: 16px; /* Ajusta al tamaño deseado para la legibilidad */
-    margin-top: 5px; /* Espacio reducido sobre el párrafo para compactar */
-    margin-bottom: 5px; /* Espacio reducido debajo del párrafo */
-    max-width: 800px; /* Limita el ancho del párrafo para mejor lectura */
-    text-align: center; /* Alinea el texto al centro */
-    line-height: 1.4; /* Ajusta el interlineado para mejor legibilidad */
-    padding: 0 20px; /* Padding horizontal para no tocar los bordes del contenedor */
-}
+
 
 
 .main-container {
