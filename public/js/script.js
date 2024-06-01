@@ -109,11 +109,19 @@ function setupButtonListeners() {
 }
 
 function clearCategories() {
+    // Limpia la lista de categorías
     const categoryListElement = document.getElementById('categoryList');
     if (categoryListElement) {
         categoryListElement.innerHTML = ''; // Clear the displayed list
     }
+
+    // Limpia el texto de los resultados de clasificación
+    const resultTextElement = document.getElementById('resultText');
+    if (resultTextElement) {
+        resultTextElement.textContent = ''; // Clear the result text
+    }
 }
+
 
 
 
