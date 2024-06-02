@@ -88,14 +88,12 @@
     function copyToClipboard() {
         const exampleText = document.querySelector('.example-text').textContent;
         navigator.clipboard.writeText(exampleText).then(() => {
-            alert('Example description copied to clipboard! You can paste it into the box above.');
-            document.getElementById('userNeeds').value = exampleText; // Optionally, automatically paste the text into the textarea
+            document.getElementById('userNeeds').value = exampleText; // Automatically paste the text into the textarea
         }).catch(err => {
             console.error('Failed to copy: ', err);
         });
     }
 </script>
-
 
 
         
@@ -115,16 +113,27 @@
             </div>
         </section>
 
-        <section class="results-section">
-            <h2>Classification Results</h2>
-            <div class="box">
-                <p id="resultText"></p>
-            </div>
-        </section>
-    </main>
+<section class="results-section">
+    <h2>Classification Results</h2>
+    <div class="comparison-container" id="comparisonContainer" >
+        <div class="item-box" id="userItem">
+            <h3>User Description</h3>
+            <p><strong>Category:</strong> <span id="userCategory"></span></p>
+            <p><strong>Subcategory:</strong> <span id="userSubcategory"></span></p>
+            <p><strong>Name:</strong> <span id="userName"></span></p>
+            <p><strong>Description:</strong> <span id="userDescription"></span></p>
+            <p><strong>Tags:</strong> <span id="userTags"></span></p>
+        </div>
+        <div class="item-box" id="matchedItem">
+            <h3>Matched Item</h3>
+            <!-- Detalles del ítem se llenarán con JS -->
+        </div>
+    </div>
+</section>
+
 
     <footer>
-        GPTCategoryExplorer © 2024
+        GPTDescriptionMatcher © 2024
     </footer>
     <script src="js/script.js"></script>
 	    <script>
