@@ -9,6 +9,16 @@ function initialize() {
 }
 
 
+document.getElementById('downloadBtn').addEventListener('click', function() {
+    var a = document.createElement('a');
+    a.href = 'data/empty_categorization_template.json'; // Ruta al archivo que quieres descargar
+    a.download = 'empty_categorization_template.json'; // Nombre del archivo que se descargará
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
+
 function setupFileUploadListener() {
     const uploadInput = document.getElementById('file-upload');
     uploadInput.accept = ".json";  // Asegurarse de que solo se aceptan archivos JSON
@@ -40,6 +50,8 @@ function setupFileUploadListener() {
         }
     };
 }
+
+
 
 
 
@@ -106,7 +118,54 @@ function setupButtonListeners() {
             clearCategories();
         });
     }
+
+    // Agregar listener para el botón de cargar datos de ejemplo
+    const loadExampleButton = document.getElementById('loadExample');
+    if (loadExampleButton) {
+        loadExampleButton.addEventListener('click', function() {
+            fetch('data/example_categorization_template.json')  // Asegúrate de que la ruta al archivo JSON de ejemplo es correcta
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(jsonData => {
+                    sessionStorage.setItem('categoryData', JSON.stringify(jsonData));
+                    console.log('Example JSON data loaded and stored successfully.');
+
+                    // Imprimir categorías y subcategorías para consulta
+                    console.log('Categorías y Subcategorías del Ejemplo:');
+                    for (const categoryName in jsonData.Categories) {
+                        console.log(categoryName);  // Imprime el nombre de la categoría
+                        const subcategories = jsonData.Categories[categoryName];
+                        for (const subcategoryName in subcategories) {
+                            console.log(`  - ${subcategoryName}`);  // Imprime el nombre de la subcategoría con indentación
+                        }
+                    }
+                // Alerta para confirmar la carga
+                alert("Example data loaded successfully!");
+				})
+                .catch(error => {
+                    console.error('Error fetching example data:', error);
+                });
+        });
+    }
 }
+
+
+
+function copyToClipboard() {
+    const exampleText = document.querySelector('.example-text').textContent;
+    navigator.clipboard.writeText(exampleText).then(() => {
+        document.getElementById('userNeeds').value = exampleText; // Automatically paste the text into the textarea
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+
+
 
 function clearCategories() {
     // Limpia la lista de categorías
@@ -135,13 +194,13 @@ function initiateCategoryProcess() {
     const description = document.getElementById('userNeeds').value.trim();
     sessionStorage.setItem('currentDescription', description); // Guardar en sessionStorage
     if (!description) {
-        console.log("Por favor, describe tu artículo.");
+        alert("Please describe your item.");
         return;
     }
 	
     const jsonData = sessionStorage.getItem('categoryData');
     if (!jsonData) {
-        console.log('No se encontraron datos de categorías. Por favor, sube un archivo JSON primero.');
+        alert('No category data found. Please upload a JSON file first.');
         return;
     }
 
@@ -151,7 +210,7 @@ function initiateCategoryProcess() {
         const promptMessage = createCategoryPrompt(description, categories);
         sendCategoryMessageToServer(promptMessage);
     } else {
-        console.log('No se encontraron categorías en el JSON subido.');
+        alert('No categories found in the uploaded JSON.');
     }
 }
 
