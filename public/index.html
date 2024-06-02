@@ -46,25 +46,58 @@
 		<section class="input-section">
 			<h2>Upload Your Categories</h2>
 			<div class="box">
+				<p>Fill in with your categories if you downloaded the empty template and upload.</p>
 				<div class="button-container">
-					<button onclick="location.href='data/empty_categorization_template.json'" download="empty_categorization_template.json">Download Empty Template</button>
-					<button onclick="location.href='data/sample_categorization_template.json'" download="sample_categorization_template.json">Download Example Template</button>
+					<!-- Botón para descargar la plantilla vacía -->
+		<button id="downloadBtn">Download Empty Template</button>
+					<!-- Enlace para previsualizar la plantilla vacía -->
+					<a href="data/empty_categorization_template.json" style="margin-left: 5px;">Preview</a>
 				</div>
-				<p>Click on the button to view the template in your browser. To download the file, right-click on the button or the displayed file in your browser and choose "Save As..." from the context menu.</p>
-				<p>Fill in with your categories if you downloaded the empty template.</p>
-				<label for="file-upload" class="custom-file-upload">
-					<input id="file-upload" type="file"/>
-					Upload Filled Template
-				</label>
+				<div class="button-container" style="margin-top: 10px;">
+					<!-- Botón para subir la plantilla completada -->
+					<label for="file-upload" class="custom-file-upload">
+						<input id="file-upload" type="file" style="display: none;"/>
+						Upload Filled Template
+					</label>
+				</div>
+			</div>
+			<h2>Or Try Our Example</h2>
+			<div class="box">
+				<p>You can see how it works by loading our example data related to cryptocurrencies.</p>
+				<!-- Botón para cargar datos de ejemplo -->
+				<button id="loadExample" class="load-example-button">Load Example Data</button>
+				<!-- Enlace para previsualizar los datos de ejemplo -->
+				<a href="data/example_categorization_template.json" style="margin-left: 5px;">Preview</a>
 			</div>
 		</section>
 
+
 <section class="description-section">
     <h2>Describe Your New Item</h2>
+    <p>Enter a complete description, like the text from a book's back cover, to find a match. This tool uses detailed descriptions for item-to-item matching.</p>
+    <p>Using simple keywords will select the first item in a subcategory, but detailed descriptions yield more precise matches.</p>
+    <p>For a pre-prepared description example, click this button:</p>
+    <button onclick="copyToClipboard()" class="copy-button" style="margin-bottom: 10px;">Use a Prepared Example Description</button>
     <div class="box">
-        <textarea id="userNeeds" placeholder="Describe Your New Item... E.g., 'I need a VBA macro for Word that highlights author names in the bibliography before the year of publication', or 'I need an article about Ethereum smart contracts focusing on security practices and vulnerability assessments'." rows="4" style="width:100%;"></textarea>
+        <textarea id="userNeeds" placeholder="Describe your item here or use the example by clicking the button above." rows="4" style="width:100%;"></textarea>
     </div>
+    <p class="example-text" style="display:none;">This comprehensive guide delves into blockchain technology with a focus on smart contract security. It highlights key strategies to manage vulnerabilities within this framework. The manual extensively covers the development, deployment, and safeguarding of smart contracts, emphasizing the technological underpinnings and best practices in defensive programming to enhance security against potential breaches.</p>
 </section>
+
+<script>
+    function copyToClipboard() {
+        const exampleText = document.querySelector('.example-text').textContent;
+        navigator.clipboard.writeText(exampleText).then(() => {
+            alert('Example description copied to clipboard! You can paste it into the box above.');
+            document.getElementById('userNeeds').value = exampleText; // Optionally, automatically paste the text into the textarea
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+
+
+
         
         <div class="button-container">
             <div class="left-buttons">
